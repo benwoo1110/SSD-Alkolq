@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using SSD_Alkolq.Data;
 
 namespace SSD_Alkolq
 {
@@ -24,6 +26,9 @@ namespace SSD_Alkolq
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDbContext<AlkolqContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("AlkolqContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
