@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SSD_Alkolq.Models
 {
-    public class AlchoholProduct
+    public class AlcoholProduct
     {
         public int ID { get; set; }
         public string Name { get; set; }

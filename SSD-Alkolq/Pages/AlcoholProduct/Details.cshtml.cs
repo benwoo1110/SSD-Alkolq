@@ -19,7 +19,7 @@ namespace SSD_Alkolq.Pages.AlcoholProduct
             _context = context;
         }
 
-        public AlchoholProduct AlchoholProduct { get; set; }
+        public Models.AlcoholProduct AlcoholProduct { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,9 +28,9 @@ namespace SSD_Alkolq.Pages.AlcoholProduct
                 return NotFound();
             }
 
-            AlchoholProduct = await _context.AlchoholProduct.FirstOrDefaultAsync(m => m.ID == id);
+            AlcoholProduct = await _context.AlchoholProduct.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (AlchoholProduct == null)
+            if (AlcoholProduct == null)
             {
                 return NotFound();
             }

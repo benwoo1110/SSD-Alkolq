@@ -14,6 +14,6 @@ namespace SSD_Alkolq.Data
         {
         }
 
-        public DbSet<SSD_Alkolq.Models.AlchoholProduct> AlchoholProduct { get; set; }
+        public DbSet<SSD_Alkolq.Models.AlcoholProduct> AlchoholProduct { get; set; }
     }
 }

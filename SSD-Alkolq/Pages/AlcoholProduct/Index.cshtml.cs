@@ -19,7 +19,7 @@ namespace SSD_Alkolq.Pages.AlcoholProduct
             _context = context;
         }
 
-        public IList<AlchoholProduct> AlchoholProduct { get;set; }
+        public IList<Models.AlcoholProduct> AlchoholProduct { get;set; }
 
         public async Task OnGetAsync()
         {

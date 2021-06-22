@@ -21,7 +21,7 @@ namespace SSD_Alkolq.Pages.AlcoholProduct
         }
 
         [BindProperty]
-        public AlchoholProduct AlchoholProduct { get; set; }
+        public Models.AlcoholProduct AlcoholProduct { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,9 +30,9 @@ namespace SSD_Alkolq.Pages.AlcoholProduct
                 return NotFound();
             }
 
-            AlchoholProduct = await _context.AlchoholProduct.FirstOrDefaultAsync(m => m.ID == id);
+            AlcoholProduct = await _context.AlchoholProduct.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (AlchoholProduct == null)
+            if (AlcoholProduct == null)
             {
                 return NotFound();
             }
@@ -48,7 +48,7 @@ namespace SSD_Alkolq.Pages.AlcoholProduct
                 return Page();
             }
 
-            _context.Attach(AlchoholProduct).State = EntityState.Modified;
+            _context.Attach(AlcoholProduct).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace SSD_Alkolq.Pages.AlcoholProduct
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AlchoholProductExists(AlchoholProduct.ID))
+                if (!AlchoholProductExists(AlcoholProduct.ID))
                 {
                     return NotFound();
                 }

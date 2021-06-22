@@ -25,7 +25,7 @@ namespace SSD_Alkolq.Pages.AlcoholProduct
         }
 
         [BindProperty]
-        public AlchoholProduct AlchoholProduct { get; set; }
+        public Models.AlcoholProduct AlcoholProduct { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
@@ -36,7 +36,7 @@ namespace SSD_Alkolq.Pages.AlcoholProduct
                 return Page();
             }
 
-            _context.AlchoholProduct.Add(AlchoholProduct);
+            _context.AlchoholProduct.Add(AlcoholProduct);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
