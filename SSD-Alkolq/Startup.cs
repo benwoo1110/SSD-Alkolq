@@ -9,7 +9,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using SSD_Alkolq.Data;
+using SSD_Alkolq.Models;
 
 namespace SSD_Alkolq
 {
@@ -29,6 +32,7 @@ namespace SSD_Alkolq
 
             services.AddDbContext<AlkolqContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("AlkolqContext")));
+            services.AddIdentity<ApplicationUser, Microsoft.AspNetCore.Identity.IdentityRole>().AddDefaultUI().AddEntityFrameworkStores<AlkolqContext>().AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +51,7 @@ namespace SSD_Alkolq
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();

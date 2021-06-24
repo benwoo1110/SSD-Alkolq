@@ -10,8 +10,8 @@ using SSD_Alkolq.Data;
 namespace SSD_Alkolq.Migrations
 {
     [DbContext(typeof(AlkolqContext))]
-    [Migration("20210624053313_AddIdentityScheme")]
-    partial class AddIdentityScheme
+    [Migration("20210624053649_AddIdentitySchema")]
+    partial class AddIdentitySchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

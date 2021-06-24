@@ -19,8 +19,8 @@ namespace SSD_Alkolq.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("AlkolqContext")));
 
-                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<AlkolqContext>();
+                //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                //    .AddEntityFrameworkStores<AlkolqContext>();
             });
         }
     }
