@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SSD_Alkolq.Pages.AlcoholProduct
 {

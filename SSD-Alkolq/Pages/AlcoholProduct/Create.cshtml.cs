@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SSD_Alkolq.Pages.AlcoholProduct
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly SSD_Alkolq.Data.AlkolqContext _context;

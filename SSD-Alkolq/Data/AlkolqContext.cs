@@ -8,7 +8,7 @@ using SSD_Alkolq.Models;
 
 namespace SSD_Alkolq.Data
 {
-    public class AlkolqContext : IdentityDbContext<ApplicationUser>
+    public class AlkolqContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         public AlkolqContext (DbContextOptions<AlkolqContext> options)
             : base(options)

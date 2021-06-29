@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SSD_Alkolq.Pages.AlcoholProduct
 {
+    [Authorize(Roles = "Admin")]
     public class EditModel : PageModel
     {
         private readonly SSD_Alkolq.Data.AlkolqContext _context;
