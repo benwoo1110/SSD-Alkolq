@@ -9,7 +9,7 @@ using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
 using Microsoft.AspNetCore.Authorization;
 
-namespace SSD_Alkolq.Pages.AlcoholProduct
+namespace SSD_Alkolq.Pages.AlcoholProducts
 {
     //[Authorize(Roles = "Admin, Users")]
     public class IndexModel : PageModel
