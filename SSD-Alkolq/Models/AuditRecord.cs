@@ -9,7 +9,7 @@ namespace SSD_Alkolq.Models
     public class AuditRecord
     {
         [Key]
-        public int Audit_ID { get; set; }
+        public int ID { get; set; }
 
         [Display(Name = "Audit Action")]
         public string AuditActionType { get; set; }

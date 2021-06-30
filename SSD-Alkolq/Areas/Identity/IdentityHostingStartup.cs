@@ -15,12 +15,6 @@ namespace SSD_Alkolq.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<AlkolqContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("AlkolqContext")));
-
-                //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                //    .AddEntityFrameworkStores<AlkolqContext>();
             });
         }
     }
