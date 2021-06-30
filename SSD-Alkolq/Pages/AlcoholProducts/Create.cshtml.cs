@@ -39,7 +39,24 @@ namespace SSD_Alkolq.Pages.AlcoholProduct
             }
 
             _context.AlchoholProduct.Add(AlcoholProduct);
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
+
+            // Once a record is added, create an audit record
+            if (await _context.SaveChangesAsync() > 0)
+            {
+                // Create an auditrecord object
+                var auditrecord = new AuditRecord();
+                auditrecord.AuditActionType = "Add Movie Record";
+                auditrecord.DateTimeStamp = DateTime.Now;
+                auditrecord.KeyAlcoholFieldID = AlcoholProduct.ID;
+                // Get current logged-in user
+                var userID = User.Identity.Name.ToString();
+                auditrecord.Username = userID;
+
+                _context.AuditRecords.Add(auditrecord);
+                await _context.SaveChangesAsync();
+            }
+
 
             return RedirectToPage("./Index");
         }

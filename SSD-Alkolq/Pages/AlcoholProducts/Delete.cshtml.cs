@@ -52,7 +52,21 @@ namespace SSD_Alkolq.Pages.AlcoholProduct
             if (AlcoholProduct != null)
             {
                 _context.AlchoholProduct.Remove(AlcoholProduct);
-                await _context.SaveChangesAsync();
+                //  await _context.SaveChangesAsync();
+
+                // Once a record is deleted, create an audit record
+                if (await _context.SaveChangesAsync() > 0)
+                {
+                    var auditrecord = new AuditRecord();
+                    auditrecord.AuditActionType = "Delete Movie Record";
+                    auditrecord.DateTimeStamp = DateTime.Now;
+                    auditrecord.KeyAlcoholFieldID = AlcoholProduct.ID;
+                    var userID = User.Identity.Name.ToString();
+                    auditrecord.Username = userID;
+                    _context.AuditRecords.Add(auditrecord);
+                    await _context.SaveChangesAsync();
+                }
+
             }
 
             return RedirectToPage("./Index");
