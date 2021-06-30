@@ -23,5 +23,7 @@ namespace SSD_Alkolq.Data
         public DbSet<SSD_Alkolq.Models.AlcoholProduct> AlchoholProduct { get; set; }
 
         public DbSet<SSD_Alkolq.Models.Customer> Customer { get; set; }
+
+        public DbSet<SSD_Alkolq.Models.AuditRecord> AuditRecords { get; set; }
     }
 }

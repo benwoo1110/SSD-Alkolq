@@ -8,6 +8,7 @@
   <ItemGroup>
     <Folder Include="Pages\AlcoholProduct" />
     <Folder Include="Pages\Customer" />
+    <Folder Include="Pages\Audit\" />
   </ItemGroup>
 
   <ItemGroup>
