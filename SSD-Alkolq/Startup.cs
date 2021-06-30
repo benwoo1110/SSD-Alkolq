@@ -32,8 +32,11 @@ namespace SSD_Alkolq
 
             services.AddDbContext<AlkolqContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("AlkolqContext")));
-            //services.AddIdentity<ApplicationUser, Microsoft.AspNetCore.Identity.IdentityRole>().AddDefaultUI().AddEntityFrameworkStores<AlkolqContext>().AddDefaultTokenProviders();
-            services.AddIdentity<ApplicationUser, ApplicationRole>().AddDefaultUI().AddEntityFrameworkStores<AlkolqContext>().AddDefaultTokenProviders();
+            
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddDefaultUI()
+                .AddEntityFrameworkStores<AlkolqContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
