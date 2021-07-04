@@ -17,12 +17,12 @@ namespace SSD_Alkolq.Data
             using (var context = new AlkolqContext(serviceProvider.GetRequiredService<DbContextOptions<AlkolqContext>>()))
             {
                 // Look for any movies.
-                if (context.AlchoholProduct.Any())
+                if (context.AlcoholProduct.Any())
                 {
                     return;   // DB has been seeded
                 }
 
-                context.AlchoholProduct.AddRange(
+                context.AlcoholProduct.AddRange(
                     new AlcoholProduct
                     {
                         Name = "Name",

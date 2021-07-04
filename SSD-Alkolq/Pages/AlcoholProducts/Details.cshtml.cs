@@ -29,7 +29,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
                 return NotFound();
             }
 
-            AlcoholProduct = await _context.AlchoholProduct.FirstOrDefaultAsync(m => m.ID == id);
+            AlcoholProduct = await _context.AlcoholProduct.FirstOrDefaultAsync(m => m.ID == id);
 
             if (AlcoholProduct == null)
             {

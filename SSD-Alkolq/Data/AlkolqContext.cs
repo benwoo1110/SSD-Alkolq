@@ -20,7 +20,7 @@ namespace SSD_Alkolq.Data
             base.OnModelCreating(builder);
         }
 
-        public DbSet<SSD_Alkolq.Models.AlcoholProduct> AlchoholProduct { get; set; }
+        public DbSet<SSD_Alkolq.Models.AlcoholProduct> AlcoholProduct { get; set; }
 
         public DbSet<SSD_Alkolq.Models.Customer> Customer { get; set; }
 

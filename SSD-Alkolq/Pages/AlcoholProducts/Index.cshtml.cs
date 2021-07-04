@@ -25,7 +25,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
 
         public async Task OnGetAsync()
         {
-            AlchoholProduct = await _context.AlchoholProduct.ToListAsync();
+            AlchoholProduct = await _context.AlcoholProduct.ToListAsync();
         }
     }
 }

@@ -32,7 +32,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
                 return NotFound();
             }
 
-            AlcoholProduct = await _context.AlchoholProduct.FirstOrDefaultAsync(m => m.ID == id);
+            AlcoholProduct = await _context.AlcoholProduct.FirstOrDefaultAsync(m => m.ID == id);
 
             if (AlcoholProduct == null)
             {
@@ -73,7 +73,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
 
         private bool AlchoholProductExists(int id)
         {
-            return _context.AlchoholProduct.Any(e => e.ID == id);
+            return _context.AlcoholProduct.Any(e => e.ID == id);
         }
     }
 }
