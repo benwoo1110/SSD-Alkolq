@@ -12,5 +12,6 @@ namespace SSD_Alkolq.Models
         public decimal Price { get; set; }
         [DataType(DataType.Date)]
         public DateTime ListDate { get; set; }
+        public string ImageName { set; get; }
     }
 }
