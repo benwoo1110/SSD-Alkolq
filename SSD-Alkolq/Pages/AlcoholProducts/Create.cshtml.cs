@@ -19,9 +19,9 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
     public class CreateModel : PageModel
     {
         private readonly SSD_Alkolq.Data.AlkolqContext _context;
-        private readonly IHostEnvironment _environment;
+        private readonly IWebHostEnvironment _environment;
 
-        public CreateModel(SSD_Alkolq.Data.AlkolqContext context, IHostEnvironment environment)
+        public CreateModel(SSD_Alkolq.Data.AlkolqContext context, IWebHostEnvironment environment)
         {
             _context = context;
             _environment = environment;
@@ -51,7 +51,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
             if (Image != null)
             {
                 var fileName = GenerateUniqueName(this.Image.FileName);
-                var uploadsPath = Path.Combine(_environment.ContentRootPath, "Images");
+                var uploadsPath = Path.Combine(_environment.WebRootPath, "images");
                 var filePath = Path.Combine(uploadsPath, fileName);
                 Image.CopyTo(new FileStream(filePath, FileMode.Create));
                 AlcoholProduct.ImageName = fileName;

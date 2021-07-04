@@ -10,6 +10,31 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\images\82a2be2c-3b71-49a3-9ae8-0c91171b4f81_4e3a.jpg" />
+    <None Include="wwwroot\images\absolut_vodka.jpeg" />
+    <None Include="wwwroot\images\bacardi_151.png" />
+    <None Include="wwwroot\images\bacardi_superior_white.png" />
+    <None Include="wwwroot\images\birra_moretti.jpeg" />
+    <None Include="wwwroot\images\blason_de_l%27evangile_2016.png" />
+    <None Include="wwwroot\images\chateau_latour_camblanes_cadillac_bordeaux.png" />
+    <None Include="wwwroot\images\cloudy_bay_sauvignon_blanc_2020.png" />
+    <None Include="wwwroot\images\dictador_solera_xo_perpetual.png" />
+    <None Include="wwwroot\images\duckhorn_napa_merlot_2002.png" />
+    <None Include="wwwroot\images\grey_goose.jpg" />
+    <None Include="wwwroot\images\heineken_lager.jpeg" />
+    <None Include="wwwroot\images\hennessy_vsop.png" />
+    <None Include="wwwroot\images\ki_no_bi_kyoto_sei_navy_strength.png" />
+    <None Include="wwwroot\images\martell_cordon_bleu.png" />
+    <None Include="wwwroot\images\mischief_&amp;_mayhem_meursault_premier_cru_blagny.jpg" />
+    <None Include="wwwroot\images\roku_gin.png" />
+    <None Include="wwwroot\images\smirnoff_vodka.jpeg" />
+    <None Include="wwwroot\images\star_of_bombay_london_dry_gin.png" />
+    <None Include="wwwroot\images\sullivans_cove_double_cask_brandy.png" />
+    <None Include="wwwroot\images\tiger_beer.jpeg" />
+    <None Include="wwwroot\images\zonin_friuli_pinot_grigio.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.16" />
