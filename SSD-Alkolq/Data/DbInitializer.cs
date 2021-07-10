@@ -1,8 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CsvHelper;
+using CsvHelper.Configuration;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SSD_Alkolq.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,6 +19,7 @@ namespace SSD_Alkolq.Data
         {
             // https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/complex-data-model?view=aspnetcore-5.0&tabs=visual-studio#seed-the-database
 
+
             using (var context = new AlkolqContext(serviceProvider.GetRequiredService<DbContextOptions<AlkolqContext>>()))
             {
                 // Look for any movies.
@@ -22,15 +28,19 @@ namespace SSD_Alkolq.Data
                     return;   // DB has been seeded
                 }
 
-                context.AlcoholProduct.AddRange(
-                    new AlcoholProduct
-                    {
-                        Name = "Name",
-                        Type = "Type",
-                        Price = 1.00m
-                    }
-                    // Add more here
-                );
+                var environment = serviceProvider.GetRequiredService<IWebHostEnvironment>();
+                var dataFile = Path.Combine(environment.WebRootPath, "data.csv");
+
+                var csvConfiguration = new CsvConfiguration(CultureInfo.InvariantCulture);
+                csvConfiguration.HeaderValidated = null;
+                csvConfiguration.MissingFieldFound = null;
+
+                using (var reader = new StreamReader(dataFile))
+                using (var csv = new CsvReader(reader, csvConfiguration))
+                {
+                    var records = csv.GetRecords<AlcoholProduct>();
+                    context.AlcoholProduct.AddRange(records);
+                }
 
                 context.SaveChanges();
             }
