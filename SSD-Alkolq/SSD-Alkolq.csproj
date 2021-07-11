@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Customer" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\images\82a2be2c-3b71-49a3-9ae8-0c91171b4f81_4e3a.jpg" />
     <None Include="wwwroot\images\absolut_vodka.jpeg" />
     <None Include="wwwroot\images\bacardi_151.png" />

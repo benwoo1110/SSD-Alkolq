@@ -6,48 +6,60 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
+@*<head>
+        <link rel="stylesheet" href="~/Pages/CSS/alcohol_details.css">
+    </head>*@
+
+@*@section Styles {
+    <link rel="stylesheet" href="~/Pages/CSS/alcohol_details.css">
+}*@
+
 <h1>Details</h1>
 
 <div>
-    <h4>AlchoholProduct</h4>
+    <h4>AlcoholProduct</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AlcoholProduct.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AlcoholProduct.Name)
+        <dd class="col-sm-4">
+            <img src="~/images/@Model.AlcoholProduct.ImageName" />
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AlcoholProduct.Type)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AlcoholProduct.Type)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AlcoholProduct.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AlcoholProduct.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AlcoholProduct.Price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AlcoholProduct.Price)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AlcoholProduct.ListDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AlcoholProduct.ListDate)
-        </dd>
-        <dd class="col-sm-10">
-          <img src="~/images/@Model.AlcoholProduct.ImageName" />
-        </dd>
+        <div class="col-sm-8 details-text">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AlcoholProduct.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AlcoholProduct.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AlcoholProduct.Type)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AlcoholProduct.Type)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AlcoholProduct.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AlcoholProduct.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AlcoholProduct.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AlcoholProduct.Price)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AlcoholProduct.ListDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AlcoholProduct.ListDate)
+            </dd>
+        </div>
     </dl>
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.AlcoholProduct.ID">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>
+
+
