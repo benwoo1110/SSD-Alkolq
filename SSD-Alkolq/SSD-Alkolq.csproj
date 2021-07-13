@@ -6,6 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20210713135940_AddShoppingCart.cs" />
+    <Compile Remove="Migrations\20210713135940_AddShoppingCart.Designer.cs" />
+    <Compile Remove="Migrations\20210713140414_Testing.cs" />
+    <Compile Remove="Migrations\20210713140414_Testing.Designer.cs" />
+    <Compile Remove="Migrations\20210713144323_AddShoppingCart.cs" />
+    <Compile Remove="Migrations\20210713144323_AddShoppingCart.Designer.cs" />
+    <Compile Remove="Migrations\20210713144528_AddShoppingCart.cs" />
+    <Compile Remove="Migrations\20210713144528_AddShoppingCart.Designer.cs" />
+    <Compile Remove="Migrations\20210713144545_AddShoppingCart.cs" />
+    <Compile Remove="Migrations\20210713144545_AddShoppingCart.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\images\82a2be2c-3b71-49a3-9ae8-0c91171b4f81_4e3a.jpg" />
     <None Include="wwwroot\images\absolut_vodka.jpeg" />
     <None Include="wwwroot\images\bacardi_151.png" />
