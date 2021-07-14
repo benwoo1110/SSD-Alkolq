@@ -1,0 +1,14 @@
+﻿.navbar-brand {
+    font-family: 'Yeseva One', cursive !important;
+    font-size: 1.5em;
+}
+
+.navbar-main {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.1em;
+    padding-top: 0.4em;
+}
+
+.navbar-main .nav-item {
+    padding: 0.5em;
+}
