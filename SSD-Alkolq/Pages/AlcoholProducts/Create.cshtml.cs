@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using System.Security.Claims;
 
 namespace SSD_Alkolq.Pages.AlcoholProducts
 {

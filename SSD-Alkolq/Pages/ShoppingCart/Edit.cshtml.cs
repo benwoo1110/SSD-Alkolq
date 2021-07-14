@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
 
-namespace SSD_Alkolq.Pages.Customer
+namespace SSD_Alkolq.Pages.ShoppingCart
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace SSD_Alkolq.Pages.Customer
         }
 
         [BindProperty]
-        public Models.Customer Customer { get; set; }
+        public ShoppingCartItem ShoppingCartItem { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,12 +30,14 @@ namespace SSD_Alkolq.Pages.Customer
                 return NotFound();
             }
 
-            Customer = await _context.Customer.FirstOrDefaultAsync(m => m.ID == id);
+            ShoppingCartItem = await _context.ShoppingCart
+                .Include(s => s.AlcoholProduct).FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Customer == null)
+            if (ShoppingCartItem == null)
             {
                 return NotFound();
             }
+           ViewData["AlcoholProductID"] = new SelectList(_context.AlcoholProduct, "ID", "ID");
             return Page();
         }
 
@@ -48,7 +50,7 @@ namespace SSD_Alkolq.Pages.Customer
                 return Page();
             }
 
-            _context.Attach(Customer).State = EntityState.Modified;
+            _context.Attach(ShoppingCartItem).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +58,7 @@ namespace SSD_Alkolq.Pages.Customer
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CustomerExists(Customer.ID))
+                if (!ShoppingCartItemExists(ShoppingCartItem.ID))
                 {
                     return NotFound();
                 }
@@ -69,9 +71,9 @@ namespace SSD_Alkolq.Pages.Customer
             return RedirectToPage("./Index");
         }
 
-        private bool CustomerExists(int id)
+        private bool ShoppingCartItemExists(int id)
         {
-            return _context.Customer.Any(e => e.ID == id);
+            return _context.ShoppingCart.Any(e => e.ID == id);
         }
     }
 }

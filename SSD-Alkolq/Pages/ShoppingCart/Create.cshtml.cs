@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
 
-namespace SSD_Alkolq.Pages.Customer
+namespace SSD_Alkolq.Pages.ShoppingCart
 {
     public class CreateModel : PageModel
     {
@@ -21,11 +21,12 @@ namespace SSD_Alkolq.Pages.Customer
 
         public IActionResult OnGet()
         {
+        ViewData["AlcoholProductID"] = new SelectList(_context.AlcoholProduct, "ID", "ID");
             return Page();
         }
 
         [BindProperty]
-        public Models.Customer Customer { get; set; }
+        public ShoppingCartItem ShoppingCartItem { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
@@ -36,7 +37,7 @@ namespace SSD_Alkolq.Pages.Customer
                 return Page();
             }
 
-            _context.Customer.Add(Customer);
+            _context.ShoppingCart.Add(ShoppingCartItem);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

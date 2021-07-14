@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,22 +8,25 @@ using Microsoft.EntityFrameworkCore;
 using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
 
-namespace SSD_Alkolq.Pages.Customer
+namespace SSD_Alkolq.Pages.ShoppingCart
 {
-    public class IndexModel : PageModel
+    public class ListModel : PageModel
     {
         private readonly SSD_Alkolq.Data.AlkolqContext _context;
 
-        public IndexModel(SSD_Alkolq.Data.AlkolqContext context)
+        public ListModel(SSD_Alkolq.Data.AlkolqContext context)
         {
             _context = context;
         }
 
-        public IList<Models.Customer> Customer { get;set; }
+        public IList<ShoppingCartItem> ShoppingCartItem { get;set; }
 
         public async Task OnGetAsync()
         {
-            Customer = await _context.Customer.ToListAsync();
+            ShoppingCartItem = await _context.ShoppingCart
+                .Include(s => s.AlcoholProduct)
+                .Include(s => s.User)
+                .ToListAsync();
         }
     }
 }

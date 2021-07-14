@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace SSD_Alkolq.Pages.AlcoholProducts
 {
@@ -36,6 +37,27 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
                 return NotFound();
             }
             return Page();
+        }
+
+        //TODO https://stackoverflow.com/questions/55531992/call-server-method-without-page-reload-with-razor-page
+        public async Task<IActionResult> OnPostAddToCartAsync(int id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return Redirect("~/");
+            }
+
+            var cartItem = new ShoppingCartItem {
+                UserID = userId,
+                AlcoholProductID = id,
+                Quantity = 1
+            };
+
+            _context.ShoppingCart.Add(cartItem);
+            await _context.SaveChangesAsync();
+
+            return Redirect("~/ShoppingCart");
         }
     }
 }

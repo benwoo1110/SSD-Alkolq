@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
 
-namespace SSD_Alkolq.Pages.Customer
+namespace SSD_Alkolq.Pages.ShoppingCart
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace SSD_Alkolq.Pages.Customer
             _context = context;
         }
 
-        public Models.Customer Customer { get; set; }
+        public ShoppingCartItem ShoppingCartItem { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,9 +28,12 @@ namespace SSD_Alkolq.Pages.Customer
                 return NotFound();
             }
 
-            Customer = await _context.Customer.FirstOrDefaultAsync(m => m.ID == id);
+            ShoppingCartItem = await _context.ShoppingCart
+                .Include(s => s.User)
+                .Include(s => s.AlcoholProduct)
+                .FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Customer == null)
+            if (ShoppingCartItem == null)
             {
                 return NotFound();
             }
