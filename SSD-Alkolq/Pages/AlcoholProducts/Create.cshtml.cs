@@ -65,7 +65,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
             {
                 // Create an auditrecord object
                 var auditrecord = new AuditRecord();
-                auditrecord.AuditActionType = "Add Movie Record";
+                auditrecord.AuditActionType = "Add Alcohol Product";
                 auditrecord.DateTimeStamp = DateTime.Now;
                 auditrecord.KeyAlcoholFieldID = AlcoholProduct.ID;
                 // Get current logged-in user

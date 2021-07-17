@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SSD_Alkolq.Pages.AlcoholProducts
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly SSD_Alkolq.Data.AlkolqContext _context;
@@ -58,7 +58,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
                 if (await _context.SaveChangesAsync() > 0)
                 {
                     var auditrecord = new AuditRecord();
-                    auditrecord.AuditActionType = "Delete Movie Record";
+                    auditrecord.AuditActionType = "Delete Alcohol Product";
                     auditrecord.DateTimeStamp = DateTime.Now;
                     auditrecord.KeyAlcoholFieldID = AlcoholProduct.ID;
                     var userID = User.Identity.Name.ToString();
