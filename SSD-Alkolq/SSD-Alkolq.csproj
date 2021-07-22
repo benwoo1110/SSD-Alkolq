@@ -19,6 +19,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\images\blason_de_l%27evangile_2016.png" />
+    <Content Remove="wwwroot\images\cloudy_bay_sauvignon_blanc_2020.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\images\82a2be2c-3b71-49a3-9ae8-0c91171b4f81_4e3a.jpg" />
     <None Include="wwwroot\images\absolut_vodka.jpeg" />
     <None Include="wwwroot\images\bacardi_151.png" />
@@ -40,7 +45,7 @@
     <None Include="wwwroot\images\star_of_bombay_london_dry_gin.png" />
     <None Include="wwwroot\images\sullivans_cove_double_cask_brandy.png" />
     <None Include="wwwroot\images\tiger_beer.jpeg" />
-    <None Include="wwwroot\images\zonin_friuli_pinot_grigio.png" />
+    <None Include="wwwroot\images\zonin_fruili_pinot_gris_grigio.png" />
   </ItemGroup>
 
   <ItemGroup>
