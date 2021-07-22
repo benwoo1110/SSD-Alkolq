@@ -3,7 +3,6 @@
 
 @{
     ViewData["Title"] = "RedWine";
-    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
 <link rel="stylesheet" href="~/css/alcohol_type.css">
@@ -23,7 +22,7 @@
     {
         if (item.Type == "Red Wine")
         {
-            <a class="type-card" asp-page="~/AlcoholProducts/Details" asp-route-id="@item.ID">
+            <a class="type-card" asp-page="../AlcoholProducts/Details" asp-route-id="@item.ID">
                 <div class="type-alcoholinfo">
                     <img src="~/images/@item.ImageName" , class="type-alcoholimg" />
                     <p class="type-alcoholname">
