@@ -56,6 +56,9 @@ namespace SSD_Alkolq
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.Configure<DataProtectionTokenProviderOptions>(o =>
+                o.TokenLifespan = TimeSpan.FromHours(3));
         }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
