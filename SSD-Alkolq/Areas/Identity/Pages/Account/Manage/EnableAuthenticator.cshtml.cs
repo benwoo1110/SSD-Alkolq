@@ -149,7 +149,7 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account.Manage
         {
             return string.Format(
                 AuthenticatorUriFormat,
-                _urlEncoder.Encode("SSD_Alkolq"),
+                _urlEncoder.Encode("Alkolq"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }
