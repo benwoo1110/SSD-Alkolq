@@ -25,7 +25,7 @@ namespace SSD_Alkolq.Pages.Services
 
         public Task Execute(string apiKey, string subject, string message, string email)
         {
-            var client = new SendGridClient(apiKey);
+            var client = new SendGridClient("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");
             var msg = new SendGridMessage()
             {
                 From = new EmailAddress("alkolq.ssd@gmail.com", "Alkolq"),
