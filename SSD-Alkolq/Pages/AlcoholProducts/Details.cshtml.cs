@@ -45,7 +45,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null)
             {
-                return Redirect("~/");
+                return Redirect("~/Identity/Account/Login");
             }
 
             var cartItem = new ShoppingCartItem {

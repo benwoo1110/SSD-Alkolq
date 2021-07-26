@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
-namespace SSD_Alkolq.Pages.Services
+namespace SSD_Alkolq.Services
 {
     public class EmailSender : IEmailSender
     {
