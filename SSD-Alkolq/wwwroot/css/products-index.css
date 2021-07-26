@@ -1,0 +1,12 @@
+﻿﻿.index-title {
+    font-family: 'Yeseva One', cursive;
+    color: black;
+    font-size: 50px;
+}
+
+.index-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}

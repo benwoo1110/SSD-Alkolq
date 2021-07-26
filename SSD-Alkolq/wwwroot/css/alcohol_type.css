@@ -8,12 +8,17 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 25px;
+    margin-bottom: 50px;
     width: 50%;
 }
 
 .type-description {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Anaheim', sans-serif;
     margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 50px;
 }
 
 /* For the cards */
@@ -38,15 +43,15 @@
 }
 
 .type-alcoholname {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
+    font-family: 'Anaheim', sans-serif;
+    font-size: 20px;
     margin-top: 10px;
     height: 30px;
     width: 300px;
 }
 
 .type-alcoholprice {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 30px;
+    font-family: 'Anaheim', sans-serif;
+    font-size: 35px;
     margin-top: 30px;
 }

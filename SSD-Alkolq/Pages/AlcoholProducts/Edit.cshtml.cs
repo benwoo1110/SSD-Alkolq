@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace SSD_Alkolq.Pages.AlcoholProducts
 {
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
     public class EditModel : PageModel
     {
         private readonly SSD_Alkolq.Data.AlkolqContext _context;

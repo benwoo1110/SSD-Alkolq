@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SSD_Alkolq.Pages.Roles
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly RoleManager<ApplicationRole> _roleManager;

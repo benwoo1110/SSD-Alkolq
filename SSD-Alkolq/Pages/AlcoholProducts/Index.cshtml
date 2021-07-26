@@ -5,8 +5,9 @@
     ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
+<link rel="stylesheet" href="~/css/products_index.css">
 
-<h1>Index</h1>
+<h1 class="index-title">Index</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -29,6 +30,9 @@
                 @Html.DisplayNameFor(model => model.AlchoholProduct[0].Name)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.AlchoholProduct[0].ImageName)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.AlchoholProduct[0].Type)
             </th>
             <th>
@@ -37,17 +41,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.AlchoholProduct[0].Price)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AlchoholProduct[0].ListDate)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.AlchoholProduct) {
+        @foreach (var item in Model.AlchoholProduct)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <img src="~/images/@item.ImageName" , class="index-img" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Type)
@@ -67,6 +72,6 @@
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>

@@ -33,17 +33,17 @@ header {
 
 
 .sub-header {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Anaheim', sans-serif;
     font-size: 32px;
     color: black;
     text-align: center;
     margin: 0;
     position: absolute;
-    top: 25%;
-    left: 45%;
+    top: 27%;
+    left: 40%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-/*    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;*/
+    /*    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;*/
 }
 
 
@@ -93,7 +93,7 @@ header {
 .text-type {
     text-align: center;
     color: white;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Anaheim', sans-serif;
     font-size: 2.2rem;
     position: absolute;
     top: 50%;
