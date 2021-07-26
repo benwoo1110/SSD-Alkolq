@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SSD_Alkolq.Models;
 using SSD_Alkolq.Pages.Services;
+using Stripe.Checkout;
 
 namespace SSD_Alkolq.Pages.ShoppingCart
 {
@@ -23,22 +24,20 @@ namespace SSD_Alkolq.Pages.ShoppingCart
             _stripeOptions = stripeOptions.Value;
         }
 
-        public IList<ShoppingCartItem> ShoppingCart { get; set; }
-
-        public string UserID { get; private set; }
+        public IList<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
-            UserID = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (UserID == null)
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
             {
-                return Redirect("~/");
+                return Redirect("~/Identity/Account/Login");
             }
 
-            ShoppingCart = await _context.ShoppingCart
+            ShoppingCartItems = await _context.ShoppingCart
                 .Include(s => s.AlcoholProduct)
                 .Include(s => s.User)
-                .Where(s => s.UserID.Equals(UserID))
+                .Where(s => s.UserID.Equals(userId))
                 .ToListAsync();
 
             return Page();
@@ -49,12 +48,48 @@ namespace SSD_Alkolq.Pages.ShoppingCart
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null)
             {
-                return Redirect("~/");
+                return Redirect("~/Identity/Account/Login");
             }
 
-            
+            ShoppingCartItems = await _context.ShoppingCart
+                .Include(s => s.AlcoholProduct)
+                .Include(s => s.User)
+                .Where(s => s.UserID.Equals(userId))
+                .ToListAsync();
 
-            return Redirect("~/ShoppingCart");
+            var lineItems = new List<SessionLineItemOptions>();
+
+            foreach (var cartItem in ShoppingCartItems)
+            {
+                lineItems.Add(new SessionLineItemOptions
+                {
+                    PriceData = new SessionLineItemPriceDataOptions
+                    {
+                        UnitAmount = (long?) (cartItem.AlcoholProduct.Price * 100),
+                        Currency = "sgd",
+                        ProductData = new SessionLineItemPriceDataProductDataOptions
+                        {
+                            Name = cartItem.AlcoholProduct.Name,
+                        },
+                    },
+                    Quantity = cartItem.Quantity,
+                });
+            }
+
+            var options = new SessionCreateOptions
+            {
+                PaymentMethodTypes = new List<string> { "card" },
+                LineItems = lineItems,
+                Mode = "payment",
+                SuccessUrl = "https://example.com/success",
+                CancelUrl = "https://example.com/cancel",
+            };
+
+            var service = new SessionService();
+            Session session = service.Create(options);
+
+            Response.Headers.Add("Location", session.Url);
+            return new StatusCodeResult(303);
         }
     }
 }

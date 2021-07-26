@@ -14,16 +14,16 @@
   <thead>
     <tr>
       <th>
-        @Html.DisplayNameFor(model => model.ShoppingCart[0].AlcoholProduct)
+        @Html.DisplayNameFor(model => model.ShoppingCartItems[0].AlcoholProduct)
       </th>
       <th>
-        @Html.DisplayNameFor(model => model.ShoppingCart[0].Quantity)
+        @Html.DisplayNameFor(model => model.ShoppingCartItems[0].Quantity)
       </th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    @foreach (var item in Model.ShoppingCart) {
+    @foreach (var item in Model.ShoppingCartItems) {
     <tr>
       <td>
         @Html.DisplayFor(modelItem => item.AlcoholProduct.Name)
@@ -41,12 +41,6 @@
   </tbody>
 </table>
 
-<form asp-page-handler="AddToCart" method="post">
-    <label>Buy now!</label>
-    <script src="https://checkout.stripe.com/v3/checkout.js"
-            class="stripe-button"
-            data-key="@Model._stripeOptions.PublishableKey"
-            data-description="Pay for your alcohol."
-            data.amount="500">
-    </script>
+<form asp-page-handler="AddToCart" method="POST">
+    <button type="submit">Checkout</button>
 </form>
