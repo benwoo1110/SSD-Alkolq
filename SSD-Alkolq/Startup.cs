@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Identity.UI;
 using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using SSD_Alkolq.Pages.Services;
+using SSD_Alkolq.Services;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
 

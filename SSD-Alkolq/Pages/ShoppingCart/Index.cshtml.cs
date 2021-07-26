@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using SSD_Alkolq.Models;
-using SSD_Alkolq.Pages.Services;
+using SSD_Alkolq.Services;
 using Stripe.Checkout;
 
 namespace SSD_Alkolq.Pages.ShoppingCart
