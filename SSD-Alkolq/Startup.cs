@@ -16,6 +16,7 @@ using SSD_Alkolq.Models;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using SSD_Alkolq.Pages.Services;
 using Microsoft.AspNetCore.Mvc;
+using Stripe;
 
 namespace SSD_Alkolq
 {
@@ -44,19 +45,12 @@ namespace SSD_Alkolq
                 .AddEntityFrameworkStores<AlkolqContext>()
                 .AddDefaultTokenProviders();
 
-            /*services.AddDefaultIdentity<IdentityUser>(config =>
-            {
-                config.SignIn.RequireConfirmedEmail = true;
-            })
-            .AddEntityFrameworkStores<AlkolqContext>();*/
-
-            // requires
-            // using Microsoft.AspNetCore.Identity.UI.Services;
-            // using WebPWrecover.Services;
             services.AddTransient<IEmailSender, EmailSender>();
-            services.Configure<AuthMessageSenderOptions>(Configuration);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.Configure<AuthMessageSenderOptions>(Configuration);
+            services.Configure<StripeOptions>(Configuration.GetSection("Stripe"));
             services.Configure<DataProtectionTokenProviderOptions>(o =>
                 o.TokenLifespan = TimeSpan.FromHours(3));
         }
@@ -64,6 +58,8 @@ namespace SSD_Alkolq
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["SecretKey"];
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -61,6 +61,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="SendGrid" Version="9.24.1" />
+    <PackageReference Include="Stripe.net" Version="39.61.0" />
   </ItemGroup>
 
 	<ProjectExtensions>
