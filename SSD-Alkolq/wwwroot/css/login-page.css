@@ -1,0 +1,15 @@
+﻿* {
+    text-align: center;
+}
+
+h4 {
+    font-family: 'Yeseva One', cursive;
+    color: black;
+    font-size: 3rem;
+    margin: 2rem;
+    text-align: center;
+}
+
+.form-group {
+    font-size: 1.2rem;
+}
