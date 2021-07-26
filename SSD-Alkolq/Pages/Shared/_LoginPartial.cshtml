@@ -6,12 +6,14 @@
 {
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index"
-                   title="Manage">Hello @UserManager.GetUserName(User)!</a>
+          <li>
+                <a class="btn nav-link text-dark" asp-page="/ShoppingCart/Index"><i class="fas fa-shopping-cart fa-2x"></i></a>
             </li>
             <li>
-                <button type="submit" class="nav-link text-dark">Logout</button>
+                <a class="btn nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index"><i class="fas fa-user-circle fa-2x"></i></a>
+            </li>
+            <li>
+                <button type="submit" class="btn nav-link text-danger"><i class="fas fa-sign-out-alt fa-2x"></i></button>
             </li>
         </ul>
     </form>
