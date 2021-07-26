@@ -76,13 +76,15 @@ namespace SSD_Alkolq.Pages.ShoppingCart
                 });
             }
 
+            var url = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";
+
             var options = new SessionCreateOptions
             {
                 PaymentMethodTypes = new List<string> { "card" },
                 LineItems = lineItems,
                 Mode = "payment",
-                SuccessUrl = "https://example.com/success",
-                CancelUrl = "https://example.com/cancel",
+                SuccessUrl = url + "/Payment/Success?session_id={CHECKOUT_SESSION_ID}",
+                CancelUrl = url + "/ShoppingCart",
             };
 
             var service = new SessionService();
