@@ -1,0 +1,15 @@
+﻿* {
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Yeseva One', cursive;
+    font-size: 3rem;
+    margin-top: 4rem;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 4rem;
+    font-size: 1.4rem;
+}
