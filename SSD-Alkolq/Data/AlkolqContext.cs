@@ -28,6 +28,8 @@ namespace SSD_Alkolq.Data
 
         public DbSet<SSD_Alkolq.Models.FeedbackRecord> FeedbackRecords { get; set; }
 
+        public DbSet<SSD_Alkolq.Models.PaymentRecord> PaymentRecords { get; set; }
+
         public DbSet<SSD_Alkolq.Models.ShoppingCartItem> ShoppingCart { get; set; }
     }
 }
