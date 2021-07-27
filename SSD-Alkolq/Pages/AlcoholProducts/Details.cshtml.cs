@@ -40,8 +40,13 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
         }
 
         //TODO https://stackoverflow.com/questions/55531992/call-server-method-without-page-reload-with-razor-page
-        public async Task<IActionResult> OnPostAddToCartAsync(int id)
+        public async Task<IActionResult> OnPostAddToCartAsync(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null)
             {
@@ -50,7 +55,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
 
             var cartItem = new ShoppingCartItem {
                 UserID = userId,
-                AlcoholProductID = id,
+                AlcoholProductID = (int) id,
                 Quantity = 1
             };
 
