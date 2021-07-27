@@ -13,34 +13,35 @@
     <p class="type-description">@Model.ProductType.Description</p>
 </section>
 
-<div>
+<div class="row">
     @foreach (var item in Model.AlcoholProducts)
     {
-        <div class="type-card">
-            <a class="type-alcoholinfo" asp-page="/AlcoholProducts/Details" asp-route-id="@item.ID">
-                <img src="~/images/@item.ImageName" , class="type-alcoholimg" />
-                <p class="type-alcoholname">
-                    @Html.DisplayFor(modelItem => item.Name)
-                </p>
-                <p class="type-alcoholprice">
-                    @Html.DisplayFor(modelItem => item.Price)
-                </p>
-            </a>
-            @if (Model.IsItemInCart(item))
-            {
-                <form>
-                    <a asp-page="/ShoppingCart/Index" class="btn btn-secondary text-light">
-                        Already in Cart <i class="fas fa-external-link-alt ml-1"></i>
-                    </a>
-                </form>
-            }
-            else
-            {
-                <form asp-page-handler="AddToCart" method="post">
-                    <input type="hidden" value="@item.ID" name="id" />
-                    <button class="btn btn-primary">Add to Cart</button>
-                </form>
-            }
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <a asp-page="/AlcoholProducts/Details" asp-route-id="@item.ID">
+                    <img class="card-img-top card-image m-2" src="~/images/@item.ImageName" alt="Card image cap" />
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <p class="card-text type-alcoholprice">$@Html.DisplayFor(modelItem => item.Price)</p>
+
+                        @if (Model.IsItemInCart(item))
+                        {
+                            <form>
+                                <a asp-page="/ShoppingCart/Index" class="btn btn-secondary text-light">
+                                    Already in Cart <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </form>
+                        }
+                        else
+                        {
+                            <form asp-page-handler="AddToCart" method="post">
+                                <input type="hidden" value="@item.ID" name="id" />
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </form>
+                        }
+                    </div>
+                </a>
+            </div>
         </div>
     }
 </div>
