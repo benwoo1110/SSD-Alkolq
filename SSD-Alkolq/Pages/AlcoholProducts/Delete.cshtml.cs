@@ -31,7 +31,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
                 return NotFound();
             }
 
-            AlcoholProduct = await _context.AlcoholProduct.FirstOrDefaultAsync(m => m.ID == id);
+            AlcoholProduct = await _context.AlcoholProducts.FirstOrDefaultAsync(m => m.ID == id);
 
             if (AlcoholProduct == null)
             {
@@ -47,11 +47,11 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
                 return NotFound();
             }
 
-            AlcoholProduct = await _context.AlcoholProduct.FindAsync(id);
+            AlcoholProduct = await _context.AlcoholProducts.FindAsync(id);
 
             if (AlcoholProduct != null)
             {
-                _context.AlcoholProduct.Remove(AlcoholProduct);
+                _context.AlcoholProducts.Remove(AlcoholProduct);
                 //  await _context.SaveChangesAsync();
 
                 // Once a record is deleted, create an audit record

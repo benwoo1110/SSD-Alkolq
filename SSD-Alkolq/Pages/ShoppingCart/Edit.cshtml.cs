@@ -37,7 +37,7 @@ namespace SSD_Alkolq.Pages.ShoppingCart
             {
                 return NotFound();
             }
-           ViewData["AlcoholProductID"] = new SelectList(_context.AlcoholProduct, "ID", "ID");
+           ViewData["AlcoholProductID"] = new SelectList(_context.AlcoholProducts, "ID", "ID");
             return Page();
         }
 

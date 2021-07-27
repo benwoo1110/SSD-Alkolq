@@ -58,7 +58,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
                 AlcoholProduct.ImageName = fileName;
             }
 
-            _context.AlcoholProduct.Add(AlcoholProduct);
+            _context.AlcoholProducts.Add(AlcoholProduct);
 
             // Once a record is added, create an audit record
             if (await _context.SaveChangesAsync() > 0)

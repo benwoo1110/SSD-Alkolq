@@ -21,7 +21,7 @@ namespace SSD_Alkolq.Pages.ShoppingCart
 
         public IActionResult OnGet()
         {
-        ViewData["AlcoholProductID"] = new SelectList(_context.AlcoholProduct, "ID", "ID");
+        ViewData["AlcoholProductID"] = new SelectList(_context.AlcoholProducts, "ID", "ID");
             return Page();
         }
 

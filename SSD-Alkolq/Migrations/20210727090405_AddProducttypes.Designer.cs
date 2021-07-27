@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SSD_Alkolq.Data;
 
 namespace SSD_Alkolq.Migrations
 {
     [DbContext(typeof(AlkolqContext))]
-    partial class AlkolqContextModelSnapshot : ModelSnapshot
+    [Migration("20210727090405_AddProducttypes")]
+    partial class AddProducttypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

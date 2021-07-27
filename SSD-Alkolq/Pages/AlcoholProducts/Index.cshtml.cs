@@ -30,10 +30,10 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
         public string AlcoholType { get; set; }
         public async Task OnGetAsync()
         {
-            IQueryable<string> typeQuery = from m in _context.AlcoholProduct
+            IQueryable<string> typeQuery = from m in _context.AlcoholProducts
                                             orderby m.Type
                                             select m.Type;
-            var alcohol = from m in _context.AlcoholProduct
+            var alcohol = from m in _context.AlcoholProducts
                          select m;
             if (!string.IsNullOrEmpty(SearchString))
             {

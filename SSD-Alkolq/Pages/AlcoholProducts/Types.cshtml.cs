@@ -1,42 +1,44 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
 
-namespace SSD_Alkolq.Pages.AlcoholTypes
+namespace SSD_Alkolq.Pages.AlcoholProducts
 {
-    //[Authorize(Roles = "Admin, Users")]
-    public class WhiskyModel : PageModel
+    public class TypesModel : PageModel
     {
         private readonly SSD_Alkolq.Data.AlkolqContext _context;
 
-        public WhiskyModel(SSD_Alkolq.Data.AlkolqContext context)
+        public TypesModel(SSD_Alkolq.Data.AlkolqContext context)
         {
             _context = context;
         }
 
-        public IList<Models.AlcoholProduct> AlchoholProduct { get; set; }
-        [BindProperty(SupportsGet = true)]
+        public string TypeName { get; set; }
 
-        public string AlcoholType { get; set; }
-        public async Task OnGetAsync()
+        public ProductType ProductType { get; set; }
+
+        public IList<AlcoholProduct> AlcoholProducts { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(string typeName)
         {
-            IQueryable<string> typeQuery = from m in _context.AlcoholProduct
-                                           orderby m.Type
-                                           select m.Type;
-            var alcohol = from m in _context.AlcoholProduct
-                          select m;
+            TypeName = typeName;
+            ProductType = await _context.ProductTypes.FirstOrDefaultAsync(t => t.Name.Equals(TypeName));
+            if (ProductType == null)
+            {
+                return NotFound();
+            }
 
-            AlchoholProduct = await alcohol.ToListAsync();
+            AlcoholProducts = await _context.AlcoholProducts.Where(p => p.Type.Equals(TypeName)).ToListAsync();
+
+            return Page();
         }
+
         public async Task<IActionResult> OnPostAddToCartAsync(int id)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
