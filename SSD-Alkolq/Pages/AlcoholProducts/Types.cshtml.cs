@@ -36,11 +36,15 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
                 return NotFound();
             }
 
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             AlcoholProducts = await _context.AlcoholProducts.Where(p => p.Type.Equals(TypeName)).ToListAsync();
             ShoppingCartItems = new List<ShoppingCartItem>();
             foreach (var product in AlcoholProducts)
             {
-                ShoppingCartItems.Add(await _context.ShoppingCart.FirstOrDefaultAsync(m => m.AlcoholProductID == product.ID));
+                ShoppingCartItems.Add(await _context.ShoppingCart
+                    .Where(s => s.UserID.Equals(userId))
+                    .FirstOrDefaultAsync(m => m.AlcoholProductID == product.ID));
             }
 
             return Page();

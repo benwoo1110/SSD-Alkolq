@@ -23,6 +23,8 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
 
         public Models.AlcoholProduct AlcoholProduct { get; set; }
 
+        public bool ItemInCart { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -31,6 +33,13 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
             }
 
             AlcoholProduct = await _context.AlcoholProducts.FirstOrDefaultAsync(m => m.ID == id);
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var cartItem = await _context.ShoppingCart
+                .Where(s => s.UserID.Equals(userId))
+                .FirstOrDefaultAsync(s => s.AlcoholProductID == AlcoholProduct.ID);
+            
+            ItemInCart = cartItem != null;
 
             if (AlcoholProduct == null)
             {
