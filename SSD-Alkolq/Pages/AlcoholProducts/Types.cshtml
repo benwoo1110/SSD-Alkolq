@@ -28,7 +28,11 @@
             </a>
             @if (Model.IsItemInCart(item))
             {
-                <button class="btn btn-secondary disabled">Already in Cart</button>
+                <form>
+                    <a asp-page="/ShoppingCart/Index" class="btn btn-secondary text-light">
+                        Already in Cart <i class="fas fa-external-link-alt ml-1"></i>
+                    </a>
+                </form>
             }
             else
             {
