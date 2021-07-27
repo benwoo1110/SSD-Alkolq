@@ -17,41 +17,39 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="navbar-main" id="nav">
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-page="/Index">Alkolq</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <partial name="_LoginPartial" />
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/AlcoholProducts/Index">Products</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-dark" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-area="">Types of Alcohol</a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" asp-page="/AlcoholTypes/Beer">Beer</a>
-                                    <a class="dropdown-item" asp-page="/AlcoholTypes/RedWine">Red Wine</a>
-                                    <a class="dropdown-item" asp-page="/AlcoholTypes/WhiteWine">White Wine</a>
-                                    <a class="dropdown-item" asp-page="/AlcoholTypes/Whisky">Whisky</a>
-                                    <a class="dropdown-item" asp-page="/AlcoholTypes/Vodka">Vodka</a>
-                                    <a class="dropdown-item" asp-page="/AlcoholTypes/Brandy">Brandy</a>
-                                    <a class="dropdown-item" asp-page="/AlcoholTypes/Tequila">Tequila</a>
-                                    <a class="dropdown-item" asp-page="/AlcoholTypes/Gin">Gin</a>
-                                    <a class="dropdown-item" asp-page="/AlcoholTypes/Rum">Rum</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+    <div class="navbar-main" id="nav">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Alkolq</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/AlcoholProducts/Index">Products</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-area="">Types of Alcohol</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" asp-page="/AlcoholTypes/Beer">Beer</a>
+                                <a class="dropdown-item" asp-page="/AlcoholTypes/RedWine">Red Wine</a>
+                                <a class="dropdown-item" asp-page="/AlcoholTypes/WhiteWine">White Wine</a>
+                                <a class="dropdown-item" asp-page="/AlcoholTypes/Whisky">Whisky</a>
+                                <a class="dropdown-item" asp-page="/AlcoholTypes/Vodka">Vodka</a>
+                                <a class="dropdown-item" asp-page="/AlcoholTypes/Brandy">Brandy</a>
+                                <a class="dropdown-item" asp-page="/AlcoholTypes/Tequila">Tequila</a>
+                                <a class="dropdown-item" asp-page="/AlcoholTypes/Gin">Gin</a>
+                                <a class="dropdown-item" asp-page="/AlcoholTypes/Rum">Rum</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-            </nav>
-        </div>
-    </header>
+            </div>
+        </nav>
+    </div>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

@@ -22,13 +22,6 @@ header {
     font-family: 'Yeseva One', cursive;
     color: black;
     font-size: 200px;
-    margin: 0;
-    position: absolute;
-    top: 15%;
-    left: 38.5%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-/*    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;*/
 }
 
 
@@ -36,14 +29,6 @@ header {
     font-family: 'Anaheim', sans-serif;
     font-size: 32px;
     color: black;
-    text-align: center;
-    margin: 0;
-    position: absolute;
-    top: 27%;
-    left: 40%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    /*    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;*/
 }
 
 
@@ -62,6 +47,7 @@ header {
     position: relative;
     width: 100%;
     height: auto;
+    border-radius: 25px;
 }
 
 .image {
@@ -73,6 +59,7 @@ header {
 }
 
 .overlay {
+    border-radius: 25px;
     position: absolute;
     top: 0;
     bottom: 0;
