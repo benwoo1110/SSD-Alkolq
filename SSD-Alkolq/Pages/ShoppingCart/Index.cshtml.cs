@@ -71,6 +71,11 @@ namespace SSD_Alkolq.Pages.ShoppingCart
                 .Where(s => s.UserID.Equals(userId))
                 .ToListAsync();
 
+            if (!HasAnyCartItem())
+            {
+                return Redirect("~/ShoppingCart");
+            }
+
             var lineItems = new List<SessionLineItemOptions>();
 
             foreach (var cartItem in ShoppingCartItems)
@@ -106,6 +111,11 @@ namespace SSD_Alkolq.Pages.ShoppingCart
 
             Response.Headers.Add("Location", session.Url);
             return new StatusCodeResult(303);
+        }
+
+        public bool HasAnyCartItem()
+        {
+            return ShoppingCartItems.Count > 0;
         }
     }
 }
