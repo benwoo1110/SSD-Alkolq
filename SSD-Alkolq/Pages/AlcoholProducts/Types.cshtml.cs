@@ -23,6 +23,8 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
 
         public ProductType ProductType { get; set; }
 
+        public IList<ShoppingCartItem> ShoppingCartItems { get; set; }
+
         public IList<AlcoholProduct> AlcoholProducts { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string typeName)
@@ -35,6 +37,11 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
             }
 
             AlcoholProducts = await _context.AlcoholProducts.Where(p => p.Type.Equals(TypeName)).ToListAsync();
+            ShoppingCartItems = new List<ShoppingCartItem>();
+            foreach (var product in AlcoholProducts)
+            {
+                ShoppingCartItems.Add(await _context.ShoppingCart.FirstOrDefaultAsync(m => m.AlcoholProductID == product.ID));
+            }
 
             return Page();
         }
@@ -58,6 +65,11 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
             await _context.SaveChangesAsync();
 
             return Redirect("~/ShoppingCart");
+        }
+
+        public bool IsItemInCart(AlcoholProduct item)
+        {
+            return ShoppingCartItems.ElementAt(AlcoholProducts.IndexOf(item)) != null;
         }
     }
 }

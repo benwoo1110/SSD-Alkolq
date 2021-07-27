@@ -16,8 +16,8 @@
 <div>
     @foreach (var item in Model.AlcoholProducts)
     {
-        <a class="type-card" asp-page="/AlcoholProducts/Details" asp-route-id="@item.ID">
-            <div class="type-alcoholinfo">
+        <div class="type-card">
+            <a class="type-alcoholinfo" asp-page="/AlcoholProducts/Details" asp-route-id="@item.ID">
                 <img src="~/images/@item.ImageName" , class="type-alcoholimg" />
                 <p class="type-alcoholname">
                     @Html.DisplayFor(modelItem => item.Name)
@@ -25,11 +25,18 @@
                 <p class="type-alcoholprice">
                     @Html.DisplayFor(modelItem => item.Price)
                 </p>
-            </div>
-            <form asp-page-handler="AddToCart" method="post">
-                <input type="hidden" value="@item.ID" name="id" />
-                <button class="btn btn-primary">Add to Cart</button>
-            </form>
-        </a>
+            </a>
+            @if (Model.IsItemInCart(item))
+            {
+                <button class="btn btn-secondary disabled">Already in Cart</button>
+            }
+            else
+            {
+                <form asp-page-handler="AddToCart" method="post">
+                    <input type="hidden" value="@item.ID" name="id" />
+                    <button class="btn btn-primary">Add to Cart</button>
+                </form>
+            }
+        </div>
     }
 </div>
