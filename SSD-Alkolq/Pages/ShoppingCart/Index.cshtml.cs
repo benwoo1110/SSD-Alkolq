@@ -26,6 +26,8 @@ namespace SSD_Alkolq.Pages.ShoppingCart
 
         public IList<ShoppingCartItem> ShoppingCartItems { get; set; }
 
+        public decimal TotalPrice { get; set; }
+
         public async Task<IActionResult> OnGetAsync()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -39,6 +41,8 @@ namespace SSD_Alkolq.Pages.ShoppingCart
                 .Include(s => s.User)
                 .Where(s => s.UserID.Equals(userId))
                 .ToListAsync();
+
+            TotalPrice = ShoppingCartItems.Sum(s => s.AlcoholProduct.Price * s.Quantity);
 
             return Page();
         }

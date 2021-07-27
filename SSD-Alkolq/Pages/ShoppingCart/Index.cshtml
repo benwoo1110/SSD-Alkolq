@@ -5,7 +5,10 @@
     ViewData["Title"] = "My Shopping Cart";
 }
 
+<link rel="stylesheet" href="~/css/shopping-cart.css">
+
 <h1 class="mb-3 text-center">My Shopping Cart</h1>
+
 
 @if (Model.HasAnyCartItem())
 {
@@ -14,6 +17,9 @@
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.ShoppingCartItems[0].AlcoholProduct)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShoppingCartItems[0].AlcoholProduct.Price)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.ShoppingCartItems[0].Quantity)
@@ -25,11 +31,14 @@
             @foreach (var item in Model.ShoppingCartItems)
             {
                 <tr>
-                    <td>
+                    <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.AlcoholProduct.Name)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Quantity)
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.AlcoholProduct.Price)
+                    </td>
+                    <td class="align-middle">
+                        x @Html.DisplayFor(modelItem => item.Quantity)
                     </td>
                     <td>
                         <form asp-page-handler="DeleteCartItem" method="POST">
@@ -43,8 +52,10 @@
         </tbody>
     </table>
 
+    <h4 class="mb-4 font-weight-bold">Total Price: SGD @Model.TotalPrice</h4>
+
     <form asp-page-handler="AddToCart" method="POST">
-        <button type="submit" class="btn btn-primary">Checkout <i class="fas fa-credit-card pl-1"></i></button>
+        <button type="submit" class="btn btn-primary font-weight-bold">Checkout <i class="fas fa-credit-card pl-1"></i></button>
     </form>
 }
 else
