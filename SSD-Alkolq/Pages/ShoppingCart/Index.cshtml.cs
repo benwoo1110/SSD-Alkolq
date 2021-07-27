@@ -43,7 +43,21 @@ namespace SSD_Alkolq.Pages.ShoppingCart
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAddToCartAsync(int id)
+        public async Task<IActionResult> OnPostDeleteCartItemAsync(int id)
+        {
+            var cartItem = await _context.ShoppingCart.FindAsync(id);
+            if (cartItem == null)
+            {
+                return NotFound();
+            }
+
+            _context.ShoppingCart.Remove(cartItem);
+            await _context.SaveChangesAsync();
+
+            return Redirect("~/ShoppingCart");
+        }
+
+        public async Task<IActionResult> OnPostAddToCartAsync()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null)

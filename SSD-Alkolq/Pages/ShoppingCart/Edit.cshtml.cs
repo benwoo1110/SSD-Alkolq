@@ -43,37 +43,25 @@ namespace SSD_Alkolq.Pages.ShoppingCart
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(ShoppingCartItem).State = EntityState.Modified;
+            var cartItem = await _context.ShoppingCart.FindAsync(id);
+            if (ShoppingCartItem == null)
+            {
+                return NotFound();
+            }
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ShoppingCartItemExists(ShoppingCartItem.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            cartItem.Quantity = ShoppingCartItem.Quantity;
+
+            _context.Attach(cartItem).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
-        }
-
-        private bool ShoppingCartItemExists(int id)
-        {
-            return _context.ShoppingCart.Any(e => e.ID == id);
         }
     }
 }
