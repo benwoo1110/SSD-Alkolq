@@ -32,7 +32,9 @@
             {
                 <tr>
                     <td class="align-middle">
-                        @Html.DisplayFor(modelItem => item.AlcoholProduct.Name)
+                        <a asp-page="/AlcoholProducts/Details" asp-route-id="@item.AlcoholProduct.ID" class="text-dark">
+                            @Html.DisplayFor(modelItem => item.AlcoholProduct.Name)
+                        </a> 
                     </td>
                     <td class="align-middle">
                         @Html.DisplayFor(modelItem => item.AlcoholProduct.Price)
