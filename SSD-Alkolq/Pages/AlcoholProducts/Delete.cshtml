@@ -1,4 +1,4 @@
-@page
+@page "{id}"
 @model SSD_Alkolq.Pages.AlcoholProducts.DeleteModel
 
 @{
@@ -44,7 +44,7 @@
             @Html.DisplayFor(model => model.AlcoholProduct.ListDate)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="AlcoholProduct.ID" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

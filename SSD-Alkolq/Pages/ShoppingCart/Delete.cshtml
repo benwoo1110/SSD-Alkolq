@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id}"
 @model SSD_Alkolq.Pages.ShoppingCart.DeleteModel
 
 @{
@@ -31,7 +31,7 @@
             @Html.DisplayFor(model => model.ShoppingCartItem.Quantity)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="ShoppingCartItem.ID" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
