@@ -29,7 +29,7 @@ namespace SSD_Alkolq.Pages.Feedback
                 return NotFound();
             }
 
-            FeedbackRecord = await _context.FeedbackRecords.FirstOrDefaultAsync(m => m.Feedback_ID == id);
+            FeedbackRecord = await _context.FeedbackRecords.FirstOrDefaultAsync(m => m.ID == id);
 
             if (FeedbackRecord == null)
             {

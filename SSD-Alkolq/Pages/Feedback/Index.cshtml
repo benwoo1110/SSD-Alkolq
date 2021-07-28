@@ -14,7 +14,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FeedbackRecord[0].Username)
+                @Html.DisplayNameFor(model => model.FeedbackRecord[0].UserID)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FeedbackRecord[0].FeedbackType)
@@ -32,7 +32,7 @@
 @foreach (var item in Model.FeedbackRecord) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Username)
+                @Html.DisplayFor(modelItem => item.UserID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FeedbackType)
@@ -44,9 +44,9 @@
                 @Html.DisplayFor(modelItem => item.DateTimeStamp)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Feedback_ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Feedback_ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Feedback_ID">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
 }

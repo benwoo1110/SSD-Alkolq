@@ -30,7 +30,7 @@ namespace SSD_Alkolq.Pages.Feedback
                 return NotFound();
             }
 
-            FeedbackRecord = await _context.FeedbackRecords.FirstOrDefaultAsync(m => m.Feedback_ID == id);
+            FeedbackRecord = await _context.FeedbackRecords.FirstOrDefaultAsync(m => m.ID == id);
 
             if (FeedbackRecord == null)
             {
@@ -56,7 +56,7 @@ namespace SSD_Alkolq.Pages.Feedback
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FeedbackRecordExists(FeedbackRecord.Feedback_ID))
+                if (!FeedbackRecordExists(FeedbackRecord.ID))
                 {
                     return NotFound();
                 }
@@ -71,7 +71,7 @@ namespace SSD_Alkolq.Pages.Feedback
 
         private bool FeedbackRecordExists(int id)
         {
-            return _context.FeedbackRecords.Any(e => e.Feedback_ID == id);
+            return _context.FeedbackRecords.Any(e => e.ID == id);
         }
     }
 }

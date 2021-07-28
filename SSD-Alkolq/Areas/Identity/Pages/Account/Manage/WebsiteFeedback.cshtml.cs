@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -38,11 +39,8 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
-
-            var userID = User.Identity.Name.ToString();
-            FeedbackRecord.Username = userID;
-
-
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            FeedbackRecord.UserID = userId;
             FeedbackRecord.DateTimeStamp = DateTime.Now;
 
             _context.FeedbackRecords.Add(FeedbackRecord);

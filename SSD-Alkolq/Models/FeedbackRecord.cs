@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,10 +10,13 @@ namespace SSD_Alkolq.Models
     public class FeedbackRecord
     {
         [Key]
-        public int Feedback_ID { get; set; }
+        public int ID { get; set; }
 
-        [Display(Name = "Performed By")]
-        public string Username { get; set; }
+        [ForeignKey("ApplicationUser")]
+        [Display(Name = "User ID")]
+        public string UserID { get; set; }
+
+        public ApplicationUser User { get; set; }
         //Logged in user performing the action
 
         [Display(Name = "Feedback Type")]
@@ -30,6 +34,5 @@ namespace SSD_Alkolq.Models
         [DataType(DataType.DateTime)]
         public DateTime DateTimeStamp { get; set; }
         //Time when the event occurred
-
     }
 }
