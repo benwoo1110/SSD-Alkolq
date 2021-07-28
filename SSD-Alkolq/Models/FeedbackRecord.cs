@@ -21,6 +21,8 @@ namespace SSD_Alkolq.Models
         //Type of Feedback
 
         [Display(Name = "Feedback Content")]
+        [Required]
+        [StringLength(2048, MinimumLength = 80)]
         public string FeedbackContent { get; set; }
         //Content of Feedback
 

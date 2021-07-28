@@ -47,6 +47,8 @@
     <None Include="wwwroot\images\sullivans_cove_double_cask_brandy.png" />
     <None Include="wwwroot\images\tiger_beer.jpeg" />
     <None Include="wwwroot\images\zonin_fruili_pinot_gris_grigio.png" />
+    <None Include="wwwroot\lib\bootstrap-maxlength\dist\bootstrap-maxlength.js" />
+    <None Include="wwwroot\lib\bootstrap-maxlength\dist\bootstrap-maxlength.min.js" />
   </ItemGroup>
 
   <ItemGroup>
