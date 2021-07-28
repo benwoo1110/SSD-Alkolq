@@ -14,29 +14,34 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="FeedbackRecord.Username" class="control-label"></label>
+                <input asp-for="FeedbackRecord.Username" class="form-control" />
+                <span asp-validation-for="FeedbackRecord.Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="FeedbackRecord.FeedbackType" class="control-label"></label>
-                <select asp-for="FeedbackRecord.FeedbackType" class="form-control">
-                    <option value="Website Bugs">Website Bugs</option>
-                    <option value="Suggestions for Improvements">Suggestions for Improvements</option>
-                    <option value="Additional Feature Request">Additional Feature Request</option>
-                    <option value="Others">Others</option>
-                </select>
+                <input asp-for="FeedbackRecord.FeedbackType" class="form-control" />
                 <span asp-validation-for="FeedbackRecord.FeedbackType" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FeedbackRecord.FeedbackContent" class="control-label"></label>
-                <textarea asp-for="FeedbackRecord.FeedbackContent" class="form-control" rows="10" cols="30" required></textarea>
+                <input asp-for="FeedbackRecord.FeedbackContent" class="form-control" />
                 <span asp-validation-for="FeedbackRecord.FeedbackContent" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Submit" class="btn btn-primary"/>
+                <label asp-for="FeedbackRecord.DateTimeStamp" class="control-label"></label>
+                <input asp-for="FeedbackRecord.DateTimeStamp" class="form-control" />
+                <span asp-validation-for="FeedbackRecord.DateTimeStamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index">Back</a>
+    <a asp-page="Index">Back</a>
 </div>
 
 @section Scripts {

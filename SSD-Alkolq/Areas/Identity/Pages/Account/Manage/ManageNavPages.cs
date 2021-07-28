@@ -26,6 +26,8 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account.Manage
 
         public static string TwoFactorAuthentication => "TwoFactorAuthentication";
 
+        public static string WebsiteFeedback => "WebsiteFeedback";
+
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
 
         public static string PaymentHistoryClass(ViewContext viewContext) => PageNavClass(viewContext, PaymentHistory);
@@ -43,6 +45,8 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account.Manage
         public static string PersonalDataNavClass(ViewContext viewContext) => PageNavClass(viewContext, PersonalData);
 
         public static string TwoFactorAuthenticationNavClass(ViewContext viewContext) => PageNavClass(viewContext, TwoFactorAuthentication);
+
+        public static string WebsiteFeedbackClass(ViewContext viewContext) => PageNavClass(viewContext, WebsiteFeedback);
 
         private static string PageNavClass(ViewContext viewContext, string page)
         {

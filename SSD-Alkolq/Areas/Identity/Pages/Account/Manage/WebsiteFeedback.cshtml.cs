@@ -8,13 +8,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
 
-namespace SSD_Alkolq.Pages.Feedback
+namespace SSD_Alkolq.Areas.Identity.Pages.Account.Manage
 {
-    public class CreateModel : PageModel
+    public class WebsiteFeedbackModel : PageModel
     {
         private readonly SSD_Alkolq.Data.AlkolqContext _context;
 
-        public CreateModel(SSD_Alkolq.Data.AlkolqContext context)
+        public WebsiteFeedbackModel(SSD_Alkolq.Data.AlkolqContext context)
         {
             _context = context;
         }
@@ -36,6 +36,12 @@ namespace SSD_Alkolq.Pages.Feedback
                 return Page();
             }
 
+
+            var userID = User.Identity.Name.ToString();
+            FeedbackRecord.Username = userID;
+
+
+            FeedbackRecord.DateTimeStamp = DateTime.Now;
 
             _context.FeedbackRecords.Add(FeedbackRecord);
             await _context.SaveChangesAsync();
