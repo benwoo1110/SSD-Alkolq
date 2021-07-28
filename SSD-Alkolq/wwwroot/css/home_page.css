@@ -21,13 +21,13 @@ header {
 .alkolq-header {
     font-family: 'Yeseva One', cursive;
     color: black;
-    font-size: 200px;
+    font-size: 80px;
 }
 
 
 .sub-header {
     font-family: 'Anaheim', sans-serif;
-    font-size: 32px;
+    font-size: 24px;
     color: black;
 }
 
@@ -90,3 +90,42 @@ header {
     transform: translate(-50%, -50%);
 }
 
+@media (min-width: 576px) {
+    .alkolq-header {
+        font-size: 100px;
+    }
+
+    .sub-header {
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 768px) {
+    .alkolq-header {
+        font-size: 140px;
+    }
+
+    .sub-header {
+        font-size: 28px;
+    }
+}
+
+@media (min-width: 992px) {
+    .alkolq-header {
+        font-size: 180px;
+    }
+
+    .sub-header {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .alkolq-header {
+        font-size: 200px;
+    }
+
+    .sub-header {
+        font-size: 32px;
+    }
+}
