@@ -75,12 +75,6 @@ namespace SSD_Alkolq.Data
                         },
                         new ProductType
                         {
-                            Name = "Vodka",
-                            Description = "Vodka is a clear distilled alcoholic beverage from Europe that has different varieties originating in Poland, Russia and Sweden. Composed primarily of water and ethanol, it is traditionally distilled from fermented cereal grains, and more recently, potatoes. It is traditionally drunk neat or freezer chill but can also be served in cocktails or mixed drinks.",
-                            ImageName = "vodka.jpg"
-                        },
-                        new ProductType
-                        {
                             Name = "Brandy",
                             Description = "Produced by distilling wine, Brandy generally contains 35-60% alcohol by volume and is typically consumed as an after-dinner digestif to aid digestion. They come is many varieties across the winemaking world with the most renowned ones being Cognac and Armagnac from southwestern France.",
                             ImageName = "brandy.jpg"
