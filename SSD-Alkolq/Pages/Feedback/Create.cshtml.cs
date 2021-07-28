@@ -45,7 +45,7 @@ namespace SSD_Alkolq.Pages.Feedback
             _context.FeedbackRecords.Add(FeedbackRecord);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return Redirect("~/Identity/Account/Manage");
         }
     }
 }
