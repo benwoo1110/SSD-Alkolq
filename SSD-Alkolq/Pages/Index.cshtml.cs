@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using SSD_Alkolq.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +12,19 @@ namespace SSD_Alkolq.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly SSD_Alkolq.Data.AlkolqContext _context;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(SSD_Alkolq.Data.AlkolqContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public void OnGet()
-        {
+        public IList<ProductType> ProductTypes { get; set; }
 
+        public async Task<IActionResult> OnGetAsync()
+        {
+            ProductTypes = await _context.ProductTypes.ToListAsync();
+            return Page();
         }
     }
 }
