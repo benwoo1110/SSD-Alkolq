@@ -16,6 +16,7 @@ namespace SSD_Alkolq.Models
         //Logged in user performing the action
 
         [Display(Name = "Feedback Type")]
+        [Required]
         public string FeedbackType { get; set; }
         //Type of Feedback
 

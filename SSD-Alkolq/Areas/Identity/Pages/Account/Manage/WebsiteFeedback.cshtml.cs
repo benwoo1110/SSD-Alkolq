@@ -19,9 +19,11 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account.Manage
             _context = context;
         }
 
-        public IActionResult OnGet()
+        [TempData]
+        public string StatusMessage { get; set; }
+
+        public void OnGet()
         {
-            return Page();
         }
 
         [BindProperty]
@@ -46,7 +48,8 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account.Manage
             _context.FeedbackRecords.Add(FeedbackRecord);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            StatusMessage = "Your feedback has been recorded. Thank you!";
+            return RedirectToPage();
         }
     }
 }
