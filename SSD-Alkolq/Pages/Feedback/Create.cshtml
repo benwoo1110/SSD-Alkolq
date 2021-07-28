@@ -14,11 +14,6 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="FeedbackRecord.Username" class="control-label"></label>
-                <input asp-for="FeedbackRecord.Username" class="form-control" />
-                <span asp-validation-for="FeedbackRecord.Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="FeedbackRecord.FeedbackType" class="control-label"></label>
                 <input asp-for="FeedbackRecord.FeedbackType" class="form-control" />
                 <span asp-validation-for="FeedbackRecord.FeedbackType" class="text-danger"></span>
@@ -27,11 +22,6 @@
                 <label asp-for="FeedbackRecord.FeedbackContent" class="control-label"></label>
                 <input asp-for="FeedbackRecord.FeedbackContent" class="form-control" />
                 <span asp-validation-for="FeedbackRecord.FeedbackContent" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FeedbackRecord.DateTimeStamp" class="control-label"></label>
-                <input asp-for="FeedbackRecord.DateTimeStamp" class="form-control" />
-                <span asp-validation-for="FeedbackRecord.DateTimeStamp" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" asp-page="/Identity/Account/Manage" />

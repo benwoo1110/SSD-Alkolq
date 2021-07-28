@@ -36,6 +36,12 @@ namespace SSD_Alkolq.Pages.Feedback
                 return Page();
             }
 
+            var userID = User.Identity.Name.ToString();
+            FeedbackRecord.Username = userID;
+
+
+            FeedbackRecord.DateTimeStamp = DateTime.Now;
+
             _context.FeedbackRecords.Add(FeedbackRecord);
             await _context.SaveChangesAsync();
 
