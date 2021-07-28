@@ -108,6 +108,7 @@ namespace SSD_Alkolq.Pages.ShoppingCart
                 Mode = "payment",
                 SuccessUrl = url + "/Payment/Success?session_id={CHECKOUT_SESSION_ID}",
                 CancelUrl = url + "/ShoppingCart",
+                BillingAddressCollection = "required"
             };
 
             var service = new SessionService();
