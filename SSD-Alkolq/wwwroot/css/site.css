@@ -85,9 +85,3 @@ h1 {
 h4 {
     font-family: 'Anaheim', sans-serif;
 }
-
-td {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    and white-space: nowrap;
-}
