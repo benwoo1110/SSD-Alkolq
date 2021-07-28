@@ -10,6 +10,8 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account.Manage
     {
         public static string Index => "Index";
 
+        public static string PaymentHistory => "PaymentHistory";
+
         public static string Email => "Email";
 
         public static string ChangePassword => "ChangePassword";
@@ -25,6 +27,8 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account.Manage
         public static string TwoFactorAuthentication => "TwoFactorAuthentication";
 
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
+
+        public static string PaymentHistoryClass(ViewContext viewContext) => PageNavClass(viewContext, PaymentHistory);
 
         public static string EmailNavClass(ViewContext viewContext) => PageNavClass(viewContext, Email);
 

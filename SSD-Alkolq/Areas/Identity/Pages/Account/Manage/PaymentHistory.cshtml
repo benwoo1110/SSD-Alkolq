@@ -1,0 +1,41 @@
+﻿@page
+@model PaymentHistory
+@{
+    ViewData["Title"] = "Payment History";
+    ViewData["ActivePage"] = ManageNavPages.PaymentHistory;
+}
+
+<h4>@ViewData["Title"]</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentRecords[0].CheckoutSessionID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentRecords[0].Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentRecords[0].DateTimeStamp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PaymentRecords)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckoutSessionID)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTimeStamp)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
