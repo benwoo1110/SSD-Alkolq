@@ -1,0 +1,50 @@
+﻿@page
+@model SSD_Alkolq.Pages.Payment.History.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>PaymentRecord</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PaymentRecord.ID" />
+            <div class="form-group">
+                <label asp-for="PaymentRecord.UserID" class="control-label"></label>
+                <select asp-for="PaymentRecord.UserID" class="form-control" asp-items="ViewBag.UserID"></select>
+                <span asp-validation-for="PaymentRecord.UserID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentRecord.CheckoutSessionID" class="control-label"></label>
+                <input asp-for="PaymentRecord.CheckoutSessionID" class="form-control" />
+                <span asp-validation-for="PaymentRecord.CheckoutSessionID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentRecord.Amount" class="control-label"></label>
+                <input asp-for="PaymentRecord.Amount" class="form-control" />
+                <span asp-validation-for="PaymentRecord.Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentRecord.DateTimeStamp" class="control-label"></label>
+                <input asp-for="PaymentRecord.DateTimeStamp" class="form-control" />
+                <span asp-validation-for="PaymentRecord.DateTimeStamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
