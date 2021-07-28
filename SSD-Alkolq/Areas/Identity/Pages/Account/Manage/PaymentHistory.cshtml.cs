@@ -10,11 +10,11 @@ using SSD_Alkolq.Models;
 
 namespace SSD_Alkolq.Areas.Identity.Pages.Account.Manage
 {
-    public class PaymentHistory : PageModel
+    public class PaymentHistoryModel : PageModel
     {
         private readonly SSD_Alkolq.Data.AlkolqContext _context;
 
-        public PaymentHistory(SSD_Alkolq.Data.AlkolqContext context)
+        public PaymentHistoryModel(SSD_Alkolq.Data.AlkolqContext context)
         {
             _context = context;
         }

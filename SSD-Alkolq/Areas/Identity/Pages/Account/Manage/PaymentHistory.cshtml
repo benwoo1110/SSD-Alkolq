@@ -1,5 +1,5 @@
 ﻿@page
-@model PaymentHistory
+@model PaymentHistoryModel
 @{
     ViewData["Title"] = "Payment History";
     ViewData["ActivePage"] = ManageNavPages.PaymentHistory;
@@ -39,3 +39,7 @@
         }
     </tbody>
 </table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
