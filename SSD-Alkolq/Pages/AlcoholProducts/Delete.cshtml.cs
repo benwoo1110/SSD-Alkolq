@@ -58,11 +58,11 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
                 if (await _context.SaveChangesAsync() > 0)
                 {
                     var auditrecord = new AuditRecord();
-                    auditrecord.AuditActionType = "Delete Alcohol Product";
+                    auditrecord.Action = "Delete Alcohol Product";
                     auditrecord.DateTimeStamp = DateTime.Now;
-                    auditrecord.KeyAlcoholFieldID = AlcoholProduct.ID;
+                    auditrecord.AffectedDataID = AlcoholProduct.ID;
                     var userID = User.Identity.Name.ToString();
-                    auditrecord.Username = userID;
+                    auditrecord.Performer = userID;
                     _context.AuditRecords.Add(auditrecord);
                     await _context.SaveChangesAsync();
                 }

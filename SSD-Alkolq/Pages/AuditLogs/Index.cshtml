@@ -1,5 +1,5 @@
 ﻿@page
-@model SSD_Alkolq.Pages.Audit.IndexModel
+@model SSD_Alkolq.Pages.AuditLogs.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -14,16 +14,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.AuditRecord[0].AuditActionType)
+                @Html.DisplayNameFor(model => model.AuditRecord[0].Performer)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AuditRecord[0].Username)
+                @Html.DisplayNameFor(model => model.AuditRecord[0].Action)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AuditRecord[0].DateTimeStamp)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AuditRecord[0].KeyAlcoholFieldID)
+                @Html.DisplayNameFor(model => model.AuditRecord[0].AffectedData)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuditRecord[0].AffectedDataID)
             </th>
             <th></th>
         </tr>
@@ -32,16 +35,19 @@
 @foreach (var item in Model.AuditRecord) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.AuditActionType)
+                @Html.DisplayFor(modelItem => item.Performer)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Username)
+                @Html.DisplayFor(modelItem => item.Action)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateTimeStamp)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.KeyAlcoholFieldID)
+                @Html.DisplayFor(modelItem => item.AffectedData)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AffectedDataID)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

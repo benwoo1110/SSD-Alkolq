@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using SSD_Alkolq.Models;
+using System.Security.Claims;
 
 namespace SSD_Alkolq.Areas.Identity.Pages.Account
 {
@@ -86,20 +87,29 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    // Audit log
+                    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var auditrecord = new AuditRecord
+                    {
+                        Performer = userId,
+                        Action = "LOGIN SUCCESSFUL",
+                        DateTimeStamp = DateTime.Now
+                    };
+                    _context.AuditRecords.Add(auditrecord);
+                    await _context.SaveChangesAsync();
+
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
                 else
                 {
-                    // Login failed attempt - create an audit record
-                    var auditrecord = new AuditRecord();
-                    auditrecord.AuditActionType = "Failed Login";
-                    auditrecord.DateTimeStamp = DateTime.Now;
-                    auditrecord.KeyAlcoholFieldID = 999;
-                    // 999 – dummy record 
-
-                    auditrecord.Username = Input.Email;
-                    // save the email used for the failed login
+                    // Audit log
+                    var auditrecord = new AuditRecord
+                    {
+                        Performer = Input.Email,
+                        Action = "LOGIN FAILED",
+                        DateTimeStamp = DateTime.Now
+                    };
                     _context.AuditRecords.Add(auditrecord);
                     await _context.SaveChangesAsync();
                 }

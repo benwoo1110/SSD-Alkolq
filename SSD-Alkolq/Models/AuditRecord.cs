@@ -11,22 +11,27 @@ namespace SSD_Alkolq.Models
         [Key]
         public int ID { get; set; }
 
-        [Display(Name = "Audit Action")]
-        public string AuditActionType { get; set; }
-        // Could be  Login Success /Failure/ Logout, Create, Delete, View, Update
-
         [Display(Name = "Performed By")]
-        public string Username { get; set; }
-        //Logged in user performing the action
+        public string Performer { get; set; }
+        //Identity of user or entity performing the action
+
+        [Display(Name = "Audit Action")]
+        [Required]
+        public string Action { get; set; }
+        // Could be  Login Success /Failure/ Logout, Create, Delete, View, Update
 
         [Display(Name = "Date/Time Stamp")]
         [DataType(DataType.DateTime)]
         public DateTime DateTimeStamp { get; set; }
         //Time when the event occurred
 
-        [Display(Name = "Alcohol Record ID ")]
-        public int KeyAlcoholFieldID { get; set; }
-        //Store the ID of movie record that is affected
+        [Display(Name = "Affected Data")]
+        public string AffectedData { get; set; }
+        //Store the model class name that is affected.
+
+        [Display(Name = "Affected Data ID")]
+        public int AffectedDataID { get; set; }
+        //Store the ID of table record that is affected
     }
 
 }

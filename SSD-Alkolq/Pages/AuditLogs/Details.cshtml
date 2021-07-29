@@ -1,5 +1,5 @@
 ﻿@page
-@model SSD_Alkolq.Pages.Audit.DetailsModel
+@model SSD_Alkolq.Pages.AuditLogs.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
@@ -12,16 +12,16 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AuditRecord.AuditActionType)
+            @Html.DisplayNameFor(model => model.AuditRecord.Performer)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AuditRecord.AuditActionType)
+            @Html.DisplayFor(model => model.AuditRecord.Performer)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AuditRecord.Username)
+            @Html.DisplayNameFor(model => model.AuditRecord.Action)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AuditRecord.Username)
+            @Html.DisplayFor(model => model.AuditRecord.Action)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.AuditRecord.DateTimeStamp)
@@ -30,10 +30,16 @@
             @Html.DisplayFor(model => model.AuditRecord.DateTimeStamp)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AuditRecord.KeyAlcoholFieldID)
+            @Html.DisplayNameFor(model => model.AuditRecord.AffectedData)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AuditRecord.KeyAlcoholFieldID)
+            @Html.DisplayFor(model => model.AuditRecord.AffectedData)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AuditRecord.AffectedDataID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AuditRecord.AffectedDataID)
         </dd>
     </dl>
 </div>

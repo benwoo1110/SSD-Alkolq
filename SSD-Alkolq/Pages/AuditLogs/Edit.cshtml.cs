@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
 
-namespace SSD_Alkolq.Pages.Audit
+namespace SSD_Alkolq.Pages.AuditLogs
 {
     public class EditModel : PageModel
     {
