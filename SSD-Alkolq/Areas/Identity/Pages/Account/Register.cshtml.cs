@@ -93,7 +93,7 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account
                     var auditrecord = new AuditRecord
                     {
                         Performer = user.Id,
-                        Action = "REGISTER SUCCESSFUL",
+                        Action = "SUCCESSFUL REGISTER",
                         DateTimeStamp = DateTime.Now
                     };
                     _context.AuditRecords.Add(auditrecord);

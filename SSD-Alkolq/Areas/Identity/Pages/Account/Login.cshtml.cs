@@ -92,7 +92,7 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account
                     var auditrecord = new AuditRecord
                     {
                         Performer = userId,
-                        Action = "LOGIN SUCCESSFUL",
+                        Action = "SUCCESSFUL LOGIN",
                         DateTimeStamp = DateTime.Now
                     };
                     _context.AuditRecords.Add(auditrecord);
@@ -107,7 +107,7 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account
                     var auditrecord = new AuditRecord
                     {
                         Performer = Input.Email,
-                        Action = "LOGIN FAILED",
+                        Action = "FAILED LOGIN",
                         DateTimeStamp = DateTime.Now
                     };
                     _context.AuditRecords.Add(auditrecord);

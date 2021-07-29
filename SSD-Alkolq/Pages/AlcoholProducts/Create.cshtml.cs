@@ -64,14 +64,15 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
             if (await _context.SaveChangesAsync() > 0)
             {
                 // Create an auditrecord object
-                var auditrecord = new AuditRecord();
-                auditrecord.Action = "Add Alcohol Product";
-                auditrecord.DateTimeStamp = DateTime.Now;
-                auditrecord.AffectedDataID = AlcoholProduct.ID;
-                // Get current logged-in user
-                var userID = User.Identity.Name.ToString();
-                auditrecord.Performer = userID;
-
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var auditrecord = new AuditRecord
+                {
+                    Performer = userId,
+                    AffectedData = "AlcoholProduct",
+                    AffectedDataID = AlcoholProduct.ID.ToString(),
+                    Action = "CREATE ENTRY",
+                    DateTimeStamp = DateTime.Now,
+                };
                 _context.AuditRecords.Add(auditrecord);
                 await _context.SaveChangesAsync();
             }

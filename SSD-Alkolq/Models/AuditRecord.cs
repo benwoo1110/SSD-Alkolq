@@ -30,8 +30,7 @@ namespace SSD_Alkolq.Models
         //Store the model class name that is affected.
 
         [Display(Name = "Affected Data ID")]
-        public int AffectedDataID { get; set; }
+        public string AffectedDataID { get; set; }
         //Store the ID of table record that is affected
     }
-
 }

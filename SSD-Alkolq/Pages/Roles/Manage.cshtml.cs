@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using Microsoft.AspNetCore.Authorization;
-
+using System.Security.Claims;
 
 namespace SSD_Alkolq.Pages.Roles
 {
@@ -74,6 +74,7 @@ namespace SSD_Alkolq.Pages.Roles
                         select r;
             Listroles = await roles.ToListAsync();
         }
+
         public async Task<IActionResult> OnPostAsync(string selectedusername, string selectedrolename)
         {
             //When the Assign button is pressed 
@@ -90,6 +91,20 @@ namespace SSD_Alkolq.Pages.Roles
             if (roleResult.Succeeded)
             {
                 TempData["message"] = "Role added to this user successfully";
+
+                // Audit log
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var auditrecord = new AuditRecord
+                {
+                    Performer = userId,
+                    AffectedData = "ApplicationUser",
+                    AffectedDataID = AppUser.Id,
+                    Action = "ADD ROLE " + AppRole.Name,
+                    DateTimeStamp = DateTime.Now,
+                };
+                _context.AuditRecords.Add(auditrecord);
+                await _context.SaveChangesAsync();
+
                 return RedirectToPage("Manage");
             }
 
@@ -109,8 +124,20 @@ namespace SSD_Alkolq.Pages.Roles
             if (await _userManager.IsInRoleAsync(user, delrolename))
             {
                 await _userManager.RemoveFromRoleAsync(user, delrolename);
-
                 TempData["message"] = "Role removed from this user successfully";
+
+                // Audit log
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var auditrecord = new AuditRecord
+                {
+                    Performer = userId,
+                    AffectedData = "ApplicationUser",
+                    AffectedDataID = user.Id,
+                    Action = "REMOVE ROLE " + delrolename,
+                    DateTimeStamp = DateTime.Now,
+                };
+                _context.AuditRecords.Add(auditrecord);
+                await _context.SaveChangesAsync();
             }
 
             return RedirectToPage("Manage");

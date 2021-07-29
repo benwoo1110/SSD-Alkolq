@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace SSD_Alkolq.Pages.AlcoholProducts
 {
@@ -57,12 +58,16 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
                 // Once a record is deleted, create an audit record
                 if (await _context.SaveChangesAsync() > 0)
                 {
-                    var auditrecord = new AuditRecord();
-                    auditrecord.Action = "Delete Alcohol Product";
-                    auditrecord.DateTimeStamp = DateTime.Now;
-                    auditrecord.AffectedDataID = AlcoholProduct.ID;
-                    var userID = User.Identity.Name.ToString();
-                    auditrecord.Performer = userID;
+                    // Create an auditrecord object
+                    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                    var auditrecord = new AuditRecord
+                    {
+                        Performer = userId,
+                        AffectedData = "AlcoholProduct",
+                        AffectedDataID = AlcoholProduct.ID.ToString(),
+                        Action = "DELETE ENTRY",
+                        DateTimeStamp = DateTime.Now,
+                    };
                     _context.AuditRecords.Add(auditrecord);
                     await _context.SaveChangesAsync();
                 }

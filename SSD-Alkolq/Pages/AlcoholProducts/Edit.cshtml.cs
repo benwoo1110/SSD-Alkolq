@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using System.Security.Claims;
 
 namespace SSD_Alkolq.Pages.AlcoholProducts
 {
@@ -85,6 +86,19 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
                     throw;
                 }
             }
+
+            // Create an auditrecord object
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var auditrecord = new AuditRecord
+            {
+                Performer = userId,
+                AffectedData = "AlcoholProduct",
+                AffectedDataID = AlcoholProduct.ID.ToString(),
+                Action = "UPDATE ENTRY",
+                DateTimeStamp = DateTime.Now,
+            };
+            _context.AuditRecords.Add(auditrecord);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

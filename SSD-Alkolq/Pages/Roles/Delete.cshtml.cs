@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using SSD_Alkolq.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using SSD_Alkolq.Data;
+using System.Security.Claims;
 
 namespace SSD_Alkolq.Pages.Roles
 {
     //[Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
+        private readonly AlkolqContext _context;
         private readonly RoleManager<ApplicationRole> _roleManager;
 
-        public DeleteModel(RoleManager<ApplicationRole> roleManager)
+        public DeleteModel(AlkolqContext context, RoleManager<ApplicationRole> roleManager)
         {
+            _context = context;
             _roleManager = roleManager;
         }
 
@@ -48,6 +52,22 @@ namespace SSD_Alkolq.Pages.Roles
 
             ApplicationRole = await _roleManager.FindByIdAsync(id);
             IdentityResult roleRuslt = await _roleManager.DeleteAsync(ApplicationRole);
+
+            if (roleRuslt.Succeeded)
+            {
+                // Audit log
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var auditrecord = new AuditRecord
+                {
+                    Performer = userId,
+                    AffectedData = "ApplicationRole",
+                    AffectedDataID = ApplicationRole.Id,
+                    Action = "DELETE ENTRY",
+                    DateTimeStamp = DateTime.Now,
+                };
+                _context.AuditRecords.Add(auditrecord);
+                await _context.SaveChangesAsync();
+            }
 
             return RedirectToPage("./Index");
 

@@ -40,7 +40,7 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account
             var auditrecord = new AuditRecord
             {
                 Performer = userId,
-                Action = "LOGOUT SUCCESSFUL",
+                Action = "SUCCESSFUL LOGOUT",
                 DateTimeStamp = DateTime.Now
             };
             _context.AuditRecords.Add(auditrecord);
