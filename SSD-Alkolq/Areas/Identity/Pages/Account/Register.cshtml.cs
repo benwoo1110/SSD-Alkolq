@@ -94,7 +94,8 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account
                     {
                         Performer = user.Id,
                         Action = "SUCCESSFUL REGISTER",
-                        DateTimeStamp = DateTime.Now
+                        DateTimeStamp = DateTime.Now,
+                        IPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString()
                     };
                     _context.AuditRecords.Add(auditrecord);
                     await _context.SaveChangesAsync();

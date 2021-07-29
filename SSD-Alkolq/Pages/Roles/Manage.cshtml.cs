@@ -101,6 +101,7 @@ namespace SSD_Alkolq.Pages.Roles
                     AffectedDataID = AppUser.Id,
                     Action = "ADD ROLE " + AppRole.Name,
                     DateTimeStamp = DateTime.Now,
+                    IPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString()
                 };
                 _context.AuditRecords.Add(auditrecord);
                 await _context.SaveChangesAsync();
@@ -135,6 +136,7 @@ namespace SSD_Alkolq.Pages.Roles
                     AffectedDataID = user.Id,
                     Action = "REMOVE ROLE " + delrolename,
                     DateTimeStamp = DateTime.Now,
+                    IPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString()
                 };
                 _context.AuditRecords.Add(auditrecord);
                 await _context.SaveChangesAsync();

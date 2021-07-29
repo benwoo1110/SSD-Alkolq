@@ -88,12 +88,12 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     // Audit log
-                    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                     var auditrecord = new AuditRecord
                     {
-                        Performer = userId,
+                        Performer = Input.Email,
                         Action = "SUCCESSFUL LOGIN",
-                        DateTimeStamp = DateTime.Now
+                        DateTimeStamp = DateTime.Now,
+                        IPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString()
                     };
                     _context.AuditRecords.Add(auditrecord);
                     await _context.SaveChangesAsync();
@@ -108,7 +108,8 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account
                     {
                         Performer = Input.Email,
                         Action = "FAILED LOGIN",
-                        DateTimeStamp = DateTime.Now
+                        DateTimeStamp = DateTime.Now,
+                        IPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString()
                     };
                     _context.AuditRecords.Add(auditrecord);
                     await _context.SaveChangesAsync();

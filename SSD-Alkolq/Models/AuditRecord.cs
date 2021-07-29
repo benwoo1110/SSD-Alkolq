@@ -32,5 +32,8 @@ namespace SSD_Alkolq.Models
         [Display(Name = "Affected Data ID")]
         public string AffectedDataID { get; set; }
         //Store the ID of table record that is affected
+
+        [Display(Name = "IP Address")]
+        public string IPAddress { get; set; }
     }
 }

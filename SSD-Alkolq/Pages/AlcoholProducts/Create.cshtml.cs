@@ -72,6 +72,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
                     AffectedDataID = AlcoholProduct.ID.ToString(),
                     Action = "CREATE ENTRY",
                     DateTimeStamp = DateTime.Now,
+                    IPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString()
                 };
                 _context.AuditRecords.Add(auditrecord);
                 await _context.SaveChangesAsync();

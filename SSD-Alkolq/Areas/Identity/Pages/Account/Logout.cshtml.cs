@@ -41,7 +41,8 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account
             {
                 Performer = userId,
                 Action = "SUCCESSFUL LOGOUT",
-                DateTimeStamp = DateTime.Now
+                DateTimeStamp = DateTime.Now,
+                IPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString()
             };
             _context.AuditRecords.Add(auditrecord);
             await _context.SaveChangesAsync();

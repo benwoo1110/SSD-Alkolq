@@ -53,6 +53,7 @@ namespace SSD_Alkolq.Pages.Roles
                     AffectedDataID = ApplicationRole.Id,
                     Action = "CREATE ENTRY",
                     DateTimeStamp = DateTime.Now,
+                    IPAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString()
                 };
                 _context.AuditRecords.Add(auditrecord);
                 await _context.SaveChangesAsync();
