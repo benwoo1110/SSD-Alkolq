@@ -24,7 +24,7 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        readonly IWebHostEnvironment _environment;
+        private readonly IWebHostEnvironment _environment;
         private readonly AlkolqContext _context;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
