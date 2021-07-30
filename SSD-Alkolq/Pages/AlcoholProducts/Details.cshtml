@@ -105,26 +105,48 @@
         </div>
     </div>
 
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ProductRating.UserID)
-            @Html.DisplayNameFor(model => model.ProductRating.RatingStar)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProductRating.UserID)
-            @Html.DisplayFor(model => model.ProductRating.RatingStar)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ProductRating.RatingContent)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProductRating.RatingContent)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ProductRating.DateTimeStamp)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProductRating.DateTimeStamp)
-        </dd>
-    </dl>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductRating.UserID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductRating.RatingContent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductRating.RatingStar)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductRating.DateTimeStamp)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ProductRatingList)
+            {
+                if (item.AlcoholProductID == Model.AlcoholProduct.ID)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.UserID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.RatingContent)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.RatingStar)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.DateTimeStamp)
+                        </td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+            
+          
 </div>

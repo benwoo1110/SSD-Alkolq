@@ -26,6 +26,8 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
         [BindProperty]
         public Models.ProductRating ProductRating { get; set; }
 
+        public IList<ProductRating> ProductRatingList { get; set; }
+
         public bool ItemInCart { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -34,6 +36,8 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
             {
                 return NotFound();
             }
+
+            ProductRatingList = await _context.ProductRatings.ToListAsync();
 
             AlcoholProduct = await _context.AlcoholProducts.FirstOrDefaultAsync(m => m.ID == id);
 
@@ -79,6 +83,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
+            ProductRatingList = await _context.ProductRatings.ToListAsync();
             AlcoholProduct = await _context.AlcoholProducts.FirstOrDefaultAsync(m => m.ID == id);
             if (!ModelState.IsValid)
             {
