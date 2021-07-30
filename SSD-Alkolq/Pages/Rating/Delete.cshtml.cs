@@ -20,7 +20,7 @@ namespace SSD_Alkolq.Pages.Rating
         }
 
         [BindProperty]
-        public ProductType ProductType { get; set; }
+        public ProductRating ProductRating { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,9 +29,9 @@ namespace SSD_Alkolq.Pages.Rating
                 return NotFound();
             }
 
-            ProductType = await _context.ProductTypes.FirstOrDefaultAsync(m => m.ID == id);
+            ProductRating = await _context.ProductRatings.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (ProductType == null)
+            if (ProductRating == null)
             {
                 return NotFound();
             }
@@ -45,11 +45,11 @@ namespace SSD_Alkolq.Pages.Rating
                 return NotFound();
             }
 
-            ProductType = await _context.ProductTypes.FindAsync(id);
+            ProductRating = await _context.ProductRatings.FindAsync(id);
 
-            if (ProductType != null)
+            if (ProductRating != null)
             {
-                _context.ProductTypes.Remove(ProductType);
+                _context.ProductRatings.Remove(ProductRating);
                 await _context.SaveChangesAsync();
             }
 

@@ -21,7 +21,7 @@ namespace SSD_Alkolq.Pages.Rating
         }
 
         [BindProperty]
-        public ProductType ProductType { get; set; }
+        public ProductRating ProductRating { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,9 +30,9 @@ namespace SSD_Alkolq.Pages.Rating
                 return NotFound();
             }
 
-            ProductType = await _context.ProductTypes.FirstOrDefaultAsync(m => m.ID == id);
+            ProductRating = await _context.ProductRatings.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (ProductType == null)
+            if (ProductRating == null)
             {
                 return NotFound();
             }
@@ -48,7 +48,7 @@ namespace SSD_Alkolq.Pages.Rating
                 return Page();
             }
 
-            _context.Attach(ProductType).State = EntityState.Modified;
+            _context.Attach(ProductRating).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace SSD_Alkolq.Pages.Rating
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductTypeExists(ProductType.ID))
+                if (!ProductRatingExists(ProductRating.ID))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace SSD_Alkolq.Pages.Rating
             return RedirectToPage("./Index");
         }
 
-        private bool ProductTypeExists(int id)
+        private bool ProductRatingExists(int id)
         {
-            return _context.ProductTypes.Any(e => e.ID == id);
+            return _context.ProductRatings.Any(e => e.ID == id);
         }
     }
 }
