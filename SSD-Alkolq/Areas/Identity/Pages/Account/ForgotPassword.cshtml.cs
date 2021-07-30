@@ -11,19 +11,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using SSD_Alkolq.Models;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace SSD_Alkolq.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class ForgotPasswordModel : PageModel
     {
+        readonly IWebHostEnvironment _environment;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IEmailSender _emailSender;
 
-        public ForgotPasswordModel(UserManager<ApplicationUser> userManager, IEmailSender emailSender)
+        public ForgotPasswordModel(UserManager<ApplicationUser> userManager, IEmailSender emailSender, IWebHostEnvironment environment)
         {
             _userManager = userManager;
             _emailSender = emailSender;
+            _environment = environment;
         }
 
         [BindProperty]
@@ -57,10 +61,11 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account
                     values: new { area = "Identity", code },
                     protocol: Request.Scheme);
 
-                await _emailSender.SendEmailAsync(
-                    Input.Email,
-                    "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                var resetpassHtmlPath = Path.Combine(_environment.WebRootPath, "html/passwordreset.html");
+                string resetpassHtmlText = System.IO.File.ReadAllText(resetpassHtmlPath)
+                   .Replace("{RESET_PASSWORD_LINK}", HtmlEncoder.Default.Encode(callbackUrl));
+
+                await _emailSender.SendEmailAsync(Input.Email, "Password Reset", resetpassHtmlText);
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }
