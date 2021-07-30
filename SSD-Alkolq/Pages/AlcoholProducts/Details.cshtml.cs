@@ -93,7 +93,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
             _context.ProductRatings.Add(ProductRating);
             await _context.SaveChangesAsync();
 
-            return Page();
+            return RedirectToPage("./Details", new { id = AlcoholProduct.ID });
         }
     }
 }
