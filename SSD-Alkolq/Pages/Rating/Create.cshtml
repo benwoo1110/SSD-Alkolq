@@ -1,0 +1,60 @@
+﻿@page
+@model SSD_Alkolq.Pages.Rating.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>ProductRating</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProductRating.UserID" class="control-label"></label>
+                <input asp-for="ProductRating.UserID" class="form-control" />
+                <span asp-validation-for="ProductRating.UserID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductRating.DateTimeStamp" class="control-label"></label>
+                <input asp-for="ProductRating.DateTimeStamp" class="form-control" />
+                <span asp-validation-for="ProductRating.DateTimeStamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductRating.RatingContent" class="control-label"></label>
+                <input asp-for="ProductRating.RatingContent" class="form-control" />
+                <span asp-validation-for="ProductRating.RatingContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductRating.RatingStar" class="control-label"></label>
+                <select asp-for="ProductRating.RatingStar" class="form-control">
+                    <option value="1" selected disabled>1 Star</option>
+                    <option value="2">2 Star</option>
+                    <option value="3">3 Star</option>
+                    <option value="4">4 Star</option>
+                    <option value="5">5 Star</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductRating.AlcoholProductID" class="control-label"></label>
+                <input asp-for="ProductRating.AlcoholProductID" class="form-control" />
+                <span asp-validation-for="ProductRating.AlcoholProductID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

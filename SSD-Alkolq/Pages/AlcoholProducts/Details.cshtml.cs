@@ -23,6 +23,11 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
 
         public Models.AlcoholProduct AlcoholProduct { get; set; }
 
+        [BindProperty]
+        public Models.ProductRating ProductRating { get; set; }
+
+        public IList<ProductRating> ProductRatingList { get; set; }
+
         public bool ItemInCart { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -31,6 +36,8 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
             {
                 return NotFound();
             }
+
+            ProductRatingList = await _context.ProductRatings.ToListAsync();
 
             AlcoholProduct = await _context.AlcoholProducts.FirstOrDefaultAsync(m => m.ID == id);
 
@@ -72,6 +79,26 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
             await _context.SaveChangesAsync();
 
             return Redirect("~/ShoppingCart");
+        }
+
+        public async Task<IActionResult> OnPostAsync(int? id)
+        {
+            ProductRatingList = await _context.ProductRatings.ToListAsync();
+            AlcoholProduct = await _context.AlcoholProducts.FirstOrDefaultAsync(m => m.ID == id);
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ProductRating.UserID = userId;
+            ProductRating.DateTimeStamp = DateTime.Now;
+            ProductRating.AlcoholProductID = AlcoholProduct.ID;
+
+            _context.ProductRatings.Add(ProductRating);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Details", new { id = AlcoholProduct.ID });
         }
     }
 }
