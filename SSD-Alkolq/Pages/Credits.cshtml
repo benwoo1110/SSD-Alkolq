@@ -4,14 +4,45 @@
     ViewData["Title"] = "Credits";
 }
 
-<h1>Credits</h1>
+<style>
+    .card img {
+        width: 40%;
+    }
+</style>
 
-<h4>This project is done by:</h4>
-<ul>
-    <li>Benedict Woo</li>
-    <li>Elsa Lee</li>
-    <li>Cody Jeow</li>
-    <li>Lynn Shaan</li>
-</ul>
+<h1 class="mb-3 text-center">Credits</h1>
 
-<p>Special thanks to Mr Saifu, our teacher who guide us through how to copy razor pages code from a word document (luck google is a thing now).</p>
+<div class="card-columns">
+    <div class="card">
+        <img src="~/images/contributors/ben.webp" class="card-img-top m-3" alt="Benedict Woo">
+        <div class="card-body">
+            <h5 class="card-title">Benedict Woo</h5>
+            <p class="card-text">Alien Force</p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="~/images/contributors/elsa.png" class="card-img-top m-3" alt="Benedict Woo">
+        <div class="card-body">
+            <h5 class="card-title">Elsa Lee</h5>
+            <p class="card-text">Frozen</p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="~/images/contributors/lynn.png" class="card-img-top m-3" alt="Benedict Woo">
+        <div class="card-body">
+            <h5 class="card-title">Lynn Shaan</h5>
+            <p class="card-text">Taller Than Ever</p>
+        </div>
+    </div>
+    <div class="card">
+        <img src="~/images/contributors/cody.webp" class="card-img-top m-3" alt="Benedict Woo">
+        <div class="card-body">
+            <h5 class="card-title">Cody Jeow</h5>
+            <p class="card-text">Aging Well</p>
+        </div>
+    </div>
+</div>
+
+<p class="text-center m-5">
+    Special thanks to Mr Saifu, our teacher who guide us through how to copy razor pages code from a word document (luck google is a thing now).
+</p>
