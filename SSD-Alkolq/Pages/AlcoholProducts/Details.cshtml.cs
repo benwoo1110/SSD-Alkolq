@@ -77,7 +77,7 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
             return Redirect("~/ShoppingCart");
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (!ModelState.IsValid)
             {
@@ -87,12 +87,12 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             ProductRating.UserID = userId;
             ProductRating.DateTimeStamp = DateTime.Now;
-            ProductRating.AlcoholProductID = AlcoholProduct.ID;
+            ProductRating.AlcoholProductID = (int)id;
 
             _context.ProductRatings.Add(ProductRating);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Details", new { AlcoholProduct.ID });
+            return RedirectToPage("./Details", new { id = id });
         }
     }
 }

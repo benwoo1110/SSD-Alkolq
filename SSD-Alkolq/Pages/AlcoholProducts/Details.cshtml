@@ -79,6 +79,7 @@
     <div class="row">
         <div class="col-md-8">
             <form method="post">
+                <input type="hidden" value="@Model.AlcoholProduct.ID" name="id" />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="ProductRating.RatingStar" class="control-label"></label>
