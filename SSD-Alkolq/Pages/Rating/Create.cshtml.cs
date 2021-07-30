@@ -25,7 +25,7 @@ namespace SSD_Alkolq.Pages.Rating
         }
 
         [BindProperty]
-        public ProductType ProductType { get; set; }
+        public ProductRating ProductRating { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
@@ -36,7 +36,7 @@ namespace SSD_Alkolq.Pages.Rating
                 return Page();
             }
 
-            _context.ProductTypes.Add(ProductType);
+            _context.ProductRatings.Add(ProductRating);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

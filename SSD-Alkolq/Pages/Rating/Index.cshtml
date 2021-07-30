@@ -15,28 +15,40 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ProductType[0].Name)
+                @Html.DisplayNameFor(model => model.ProductRating[0].UserID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProductType[0].Description)
+                @Html.DisplayNameFor(model => model.ProductRating[0].DateTimeStamp)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProductType[0].ImageName)
+                @Html.DisplayNameFor(model => model.ProductRating[0].RatingContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductRating[0].RatingStar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductRating[0].AlcoholProductID)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ProductType) {
+@foreach (var item in Model.ProductRating) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.UserID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.DateTimeStamp)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImageName)
+                @Html.DisplayFor(modelItem => item.RatingContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RatingStar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlcoholProductID)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

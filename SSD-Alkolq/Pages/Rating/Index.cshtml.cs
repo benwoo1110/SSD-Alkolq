@@ -19,11 +19,11 @@ namespace SSD_Alkolq.Pages.Rating
             _context = context;
         }
 
-        public IList<ProductType> ProductType { get;set; }
+        public IList<ProductRating> ProductRating { get;set; }
 
         public async Task OnGetAsync()
         {
-            ProductType = await _context.ProductTypes.ToListAsync();
+            ProductRating = await _context.ProductRatings.ToListAsync();
         }
     }
 }
