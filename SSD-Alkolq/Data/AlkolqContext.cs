@@ -31,5 +31,7 @@ namespace SSD_Alkolq.Data
         public DbSet<SSD_Alkolq.Models.PaymentRecord> PaymentRecords { get; set; }
 
         public DbSet<SSD_Alkolq.Models.ShoppingCartItem> ShoppingCart { get; set; }
+
+        public DbSet<SSD_Alkolq.Models.ProductRating> ProductRatings { get; set; }
     }
 }
