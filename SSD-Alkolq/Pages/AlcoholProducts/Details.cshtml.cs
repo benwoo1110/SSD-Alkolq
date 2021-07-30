@@ -23,6 +23,9 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
 
         public Models.AlcoholProduct AlcoholProduct { get; set; }
 
+        [BindProperty]
+        public Models.ProductRating ProductRating { get; set; }
+
         public bool ItemInCart { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -72,6 +75,24 @@ namespace SSD_Alkolq.Pages.AlcoholProducts
             await _context.SaveChangesAsync();
 
             return Redirect("~/ShoppingCart");
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ProductRating.UserID = userId;
+            ProductRating.DateTimeStamp = DateTime.Now;
+            ProductRating.AlcoholProductID = AlcoholProduct.ID;
+
+            _context.ProductRatings.Add(ProductRating);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Details", new { AlcoholProduct.ID });
         }
     }
 }
