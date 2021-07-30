@@ -69,6 +69,14 @@ namespace SSD_Alkolq.Areas.Identity.Pages.Account
 
             [Display(Name = "Full Name")]
             public string FullName { get; set; }
+
+            [Required]
+            [Display(Name = "Phone Number")]
+            public string PhoneNumber { get; set; }
+
+            [Required]
+            [Display(Name = "Birthday")]
+            public DateTime BirthDate { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
