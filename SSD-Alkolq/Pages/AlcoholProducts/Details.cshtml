@@ -104,50 +104,49 @@
                     </div>
                 </form>
             </div>
-        </div>
-
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ProductRating.UserID)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ProductRating.RatingContent)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ProductRating.RatingStar)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ProductRating.DateTimeStamp)
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.ProductRatingList)
-                {
-                    if (item.AlcoholProductID == Model.AlcoholProduct.ID)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(model => item.UserID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => item.RatingContent)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => item.RatingStar)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => item.DateTimeStamp)
-                            </td>
-
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>
+        </div>       
     </div>
 }
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductRating.UserID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductRating.RatingContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductRating.RatingStar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductRating.DateTimeStamp)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ProductRatingList)
+        {
+            if (item.AlcoholProductID == Model.AlcoholProduct.ID)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.UserID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.RatingContent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.RatingStar)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.DateTimeStamp)
+                    </td>
+
+                </tr>
+            }
+        }
+    </tbody>
+</table>
 
