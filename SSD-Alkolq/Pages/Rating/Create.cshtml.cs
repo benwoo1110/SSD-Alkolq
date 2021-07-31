@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 using SSD_Alkolq.Data;
 using SSD_Alkolq.Models;
 
 namespace SSD_Alkolq.Pages.Rating
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly SSD_Alkolq.Data.AlkolqContext _context;
