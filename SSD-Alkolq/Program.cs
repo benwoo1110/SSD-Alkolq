@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SSD_Alkolq.Data;
+using SSD_Alkolq.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,17 @@ namespace SSD_Alkolq
                     var logger = services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occurred seeding the DB.");
                 }
+
+                try
+                {
+                    RoleData.Initialize(services);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred seeding the DB.");
+                }
+
             }
 
             host.Run();
