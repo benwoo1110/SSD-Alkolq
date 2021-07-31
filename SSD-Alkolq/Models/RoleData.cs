@@ -24,6 +24,7 @@ namespace SSD_Alkolq.Models
                     new ApplicationRole
                     {
                         Name = "Admin",
+                        NormalizedName = "Admin",
                         Description = "Administrator",
                         CreatedDate = DateTime.Parse("2021-7-20"),
                         IPAddress = ""
@@ -32,6 +33,7 @@ namespace SSD_Alkolq.Models
                     new ApplicationRole
                     {
                         Name = "Manager",
+                        NormalizedName = "Manager",
                         Description = "Product Manager",
                         CreatedDate = DateTime.Parse("2021-7-20"),
                         IPAddress = ""
