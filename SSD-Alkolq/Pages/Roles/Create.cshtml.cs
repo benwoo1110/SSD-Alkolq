@@ -10,7 +10,7 @@ using SSD_Alkolq.Data;
 
 namespace SSD_Alkolq.Pages.Roles
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly AlkolqContext _context;

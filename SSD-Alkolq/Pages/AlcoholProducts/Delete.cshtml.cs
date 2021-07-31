@@ -12,7 +12,7 @@ using System.Security.Claims;
 
 namespace SSD_Alkolq.Pages.AlcoholProducts
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Manager")]
     public class DeleteModel : PageModel
     {
         private readonly SSD_Alkolq.Data.AlkolqContext _context;

@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace SSD_Alkolq.Pages.AlcoholProducts
 {
-    //[Authorize(Roles = "Admin, Users")]
     public class ListModel : PageModel
     {
         private readonly SSD_Alkolq.Data.AlkolqContext _context;

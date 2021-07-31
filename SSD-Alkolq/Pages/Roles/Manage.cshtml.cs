@@ -13,7 +13,7 @@ using System.Security.Claims;
 
 namespace SSD_Alkolq.Pages.Roles
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class ManageModel : PageModel
     {
         private readonly SSD_Alkolq.Data.AlkolqContext _context;
