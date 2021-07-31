@@ -17,6 +17,9 @@
                 @Html.DisplayNameFor(model => model.AuditRecord[0].Performer)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.AuditRecord[0].IPAddress)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.AuditRecord[0].Action)
             </th>
             <th>
@@ -36,6 +39,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Performer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IPAddress)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Action)
