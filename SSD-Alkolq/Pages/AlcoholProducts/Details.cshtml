@@ -18,52 +18,52 @@
             <img src="~/images/@Model.AlcoholProduct.ImageName" />
         </dd>
         <div class="col-sm-8 details-text">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AlcoholProduct.Name)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AlcoholProduct.Name)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AlcoholProduct.Type)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AlcoholProduct.Type)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AlcoholProduct.Description)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AlcoholProduct.Description)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AlcoholProduct.Price)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AlcoholProduct.Price)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.AlcoholProduct.ListDate)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AlcoholProduct.ListDate)
-            </dd>
-            @if (Model.ItemInCart)
-            {
-                <form class="m-3">
-                    <a asp-page="/ShoppingCart/Index" class="btn btn-secondary text-light">
-                        Already in Cart <i class="fas fa-external-link-alt ml-1"></i>
-                    </a>
-                </form>
-            }
-            else
-            {
-                <form asp-page-handler="AddToCart" method="post" class="m-3">
-                    <input type="hidden" value="@Model.AlcoholProduct.ID" name="id" />
-                    <button class="btn btn-primary">Add to Cart</button>
-                </form>
-            }
-        </div>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AlcoholProduct.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AlcoholProduct.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AlcoholProduct.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AlcoholProduct.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AlcoholProduct.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AlcoholProduct.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AlcoholProduct.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AlcoholProduct.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AlcoholProduct.ListDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AlcoholProduct.ListDate)
+        </dd>
+        @if (Model.ItemInCart)
+        {
+            <form class="m-3">
+                <a asp-page="/ShoppingCart/Index" class="btn btn-secondary text-light">
+                    Already in Cart <i class="fas fa-external-link-alt ml-1"></i>
+                </a>
+            </form>
+        }
+        else
+        {
+            <form asp-page-handler="AddToCart" method="post" class="m-3">
+                <input type="hidden" value="@Model.AlcoholProduct.ID" name="id" />
+                <button class="btn btn-primary">Add to Cart</button>
+            </form>
+        }
+</div>
     </dl>
 </div>
 <div>
@@ -71,82 +71,83 @@
     <a asp-page="./Index">Back to List</a>
 </div>
 
+@if (User.Identity.IsAuthenticated)
+{
+    <div>
+        <h4>Product Rating</h4>
+        <hr />
 
-<div>
-    <h4>Product Rating</h4>
-    <hr />
-
-    <div class="row">
-        <div class="col-md-8">
-            <form method="post">
-                <input type="hidden" value="@Model.AlcoholProduct.ID" name="id" />
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="ProductRating.RatingStar" class="control-label"></label>
-                    <select asp-for="ProductRating.RatingStar" class="form-control">
-                        <option value="0" selected disabled>Select the rating</option>
-                        <option value="1">1 Star</option>
-                        <option value="2">2 Star</option>
-                        <option value="3">3 Star</option>
-                        <option value="4">4 Star</option>
-                        <option value="5">5 Star</option>
-                    </select>
-                    <span asp-validation-for="ProductRating.RatingStar" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ProductRating.RatingContent" class="control-label"></label>
-                    <textarea asp-for="ProductRating.RatingContent" class="form-control" rows="10" cols="30"></textarea>
-                    <span asp-validation-for="ProductRating.RatingContent" class="text-danger pr-5"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Submit" class="btn btn-primary" />
-                </div>
-            </form>
+        <div class="row">
+            <div class="col-md-8">
+                <form method="post">
+                    <input type="hidden" value="@Model.AlcoholProduct.ID" name="id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="ProductRating.RatingStar" class="control-label"></label>
+                        <select asp-for="ProductRating.RatingStar" class="form-control">
+                            <option value="0" selected disabled>Select the rating</option>
+                            <option value="1">1 Star</option>
+                            <option value="2">2 Star</option>
+                            <option value="3">3 Star</option>
+                            <option value="4">4 Star</option>
+                            <option value="5">5 Star</option>
+                        </select>
+                        <span asp-validation-for="ProductRating.RatingStar" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProductRating.RatingContent" class="control-label"></label>
+                        <textarea asp-for="ProductRating.RatingContent" class="form-control" rows="10" cols="30"></textarea>
+                        <span asp-validation-for="ProductRating.RatingContent" class="text-danger pr-5"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductRating.UserID)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductRating.RatingContent)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductRating.RatingStar)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ProductRating.DateTimeStamp)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.ProductRatingList)
-            {
-                if (item.AlcoholProductID == Model.AlcoholProduct.ID)
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductRating.UserID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductRating.RatingContent)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductRating.RatingStar)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductRating.DateTimeStamp)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ProductRatingList)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(model => item.UserID)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => item.RatingContent)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => item.RatingStar)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => item.DateTimeStamp)
-                        </td>
+                    if (item.AlcoholProductID == Model.AlcoholProduct.ID)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => item.UserID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.RatingContent)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.RatingStar)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => item.DateTimeStamp)
+                            </td>
 
-                    </tr>
+                        </tr>
+                    }
                 }
-            }
-        </tbody>
-    </table>
-            
-          
-</div>
+            </tbody>
+        </table>
+    </div>
+}
+
