@@ -9,21 +9,21 @@
 
 <form class="m-4">
     <div class="form-row align-items-center justify-content-center">
-        <div class="col-sm-2 my-1">
-            @if (User.Identity.IsAuthenticated)
+        @if (User.Identity.IsAuthenticated)
+        {
+            @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
             {
-                @if (User.IsInRole("Admin"))
-                {
-                    <a asp-page="./Create" asp-route-id="Model.AlcoholProduct.ID">Add </a>
-                }
+                <div class="col-sm-1 my-1">
+                    <button asp-page="./Create" asp-route-id="Model.AlcoholProduct.ID" type="submit" class="btn btn-primary"><i class="fas fa-plus"></i></button>
+                </div>
             }
-        </div>
-        <div class="col-sm-2 my-1">
+        }
+        <div class="col-sm-3 my-1">
             <select asp-for="AlcoholType" asp-items="Model.Type" class="custom-select">
                 <option value="" selected>All</option>
             </select>
         </div>
-        <div class="col-sm-5 my-1">
+        <div class="col-sm-6 my-1">
             <label class="sr-only" for="search">Search</label>
             <input type="text" class="form-control" id="search" asp-for="SearchString" placeholder="Search">
         </div>
