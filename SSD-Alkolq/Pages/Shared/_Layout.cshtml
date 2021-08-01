@@ -45,11 +45,28 @@
                                 <a class="dropdown-item" asp-page="/AlcoholProducts/Types" asp-route-typeName="Rum">Rum</a>
                             </div>
                         </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/AuditLogs/Index">Audit Log</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Roles/Index">Role Management</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/AlcoholProducts/Delete">Delete</a>
+                                </li>
+                            }
+                        }
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -77,3 +94,4 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
